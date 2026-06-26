@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第02講 Level 1｜25題互動測驗</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第02講 Level 1｜25題互動測驗</h1>
+    <div class="meta">單選題，點選選項後立即顯示正誤與解析。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL02-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "依第02講整理，政府採購法的頒布日期為何？", "option_a": "民國87年5月27日", "option_b": "民國88年5月27日", "option_c": "民國89年1月1日", "option_d": "民國90年5月27日", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講整理政府採購法頒布日期為民國87年5月27日，施行日期則為民國88年5月27日。", "topic": "法規背景", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "依第02講整理，政府採購法的施行日期為何？", "option_a": "民國87年5月27日", "option_b": "民國88年5月27日", "option_c": "民國89年12月31日", "option_d": "民國93年2月1日", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第02講整理政府採購法於民國88年5月27日施行。", "topic": "法規背景", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，下列何者屬於政府採購法的典型適用對象？", "option_a": "政府機關、公立學校、公營事業", "option_b": "純私人公司與一般自然人交易", "option_c": "未受政府補助的私人社團", "option_d": "完全民間資金的私人採購", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講列出政府機關、公立學校、公營事業為典型適用對象。", "topic": "適用對象", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，補助對象辦理採購時，何種情形原則上依採購法辦理？", "option_a": "補助金額占總成本二分之一以上，且達公告金額", "option_b": "只要收到任何補助，不論金額均適用", "option_c": "補助金額低於一成，但廠商願意配合", "option_d": "補助對象是私人即可完全排除採購法", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講整理補助金額占總成本二分之一以上，且達公告金額者，原則上依採購法辦理。", "topic": "補助與代辦", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，政府採購法八章架構中，不包括下列何者？", "option_a": "總則", "option_b": "招標", "option_c": "爭議處理", "option_d": "刑事偵查專章", "correct": "D", "points": 1, "required": "TRUE", "explanation": "第02講列出八章為總則、招標、決標、履約管理、驗收、爭議處理、罰則、附則；未列刑事偵查專章。", "topic": "法規體系", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，政府採購法的立法宗旨與基本原則，下列何者正確？", "option_a": "公開、公平、效益、品質", "option_b": "秘密、低價、排他、便宜", "option_c": "迅速、保密、壟斷、行政方便", "option_d": "懲罰、偵查、沒收、追訴", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講整理基本原則為公開、公平、效益、品質，並強調促進競爭、避免不當差別待遇。", "topic": "基本原則", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，機關採購決策應如何進行較符合採購法精神？", "option_a": "兼顧公益與效益，依法行政並採專業判斷", "option_b": "只追求最低價格，不考慮品質", "option_c": "優先照顧特定廠商，避免競爭", "option_d": "依承辦人個人喜好決定即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講強調機關決策應兼顧公益與效益，依法行政並採專業判斷。", "topic": "基本原則", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，政府採購行為的法律性質為何？", "option_a": "僅具私法性質", "option_b": "僅具公法性質", "option_c": "具公法與私法雙重性質", "option_d": "完全不受法律規範", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第02講整理最高行政法院93年2月法官聯席會議決議，政府採購行為具公、私法雙重性質。", "topic": "法律性質", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，下列何者較屬政府採購公法面的爭議救濟途徑？", "option_a": "訴願、行政訴訟、向工程會申訴", "option_b": "民事訴訟、仲裁、調解", "option_c": "私人和解後完全不留紀錄", "option_d": "只由廠商自行公告處理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講將訴願、行政訴訟、向工程會申訴列為公法面的救濟途徑。", "topic": "爭議救濟", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，下列何者較屬政府採購私法面的爭議處理方式？", "option_a": "行政訴訟", "option_b": "向工程會申訴", "option_c": "民事訴訟、仲裁、調解", "option_d": "訴願", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第02講將民事訴訟、仲裁、調解列為私法面處理方式。", "topic": "爭議救濟", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，採購程序階段與契約履約爭議之法律性質判斷，下列何者較正確？", "option_a": "招標決標等程序多屬公法監理，履約爭議多依民事契約處理", "option_b": "所有採購爭議一律只能打刑事訴訟", "option_c": "履約爭議一律不得仲裁", "option_d": "採購程序完全沒有公法監理問題", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講整理採購程序階段多屬公法監理，契約履約爭議多依民事契約關係處理，得約定仲裁。", "topic": "程序與履約", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，下列何者最可能屬於工程採購？", "option_a": "對土地、建築或設備施作新建、修繕、拆除", "option_b": "購買一般辦公文具", "option_c": "聘請講師授課", "option_d": "委託資訊顧問寫報告", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講將工程採購整理為對土地、建築、設備施作新建、增改建、修繕、拆除，或改變自然環境之行為。", "topic": "工程採購", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，下列何者最符合財物採購？", "option_a": "買受、定製、承製物品、材料、設備、機具、不動產或權利", "option_b": "行政訴訟代理", "option_c": "職員教育訓練", "option_d": "清運服務", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講整理財物採購包括買受、定製、承製各類物品、材料、設備、機具、不動產、權利等。", "topic": "財物採購", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，下列何者最符合勞務採購？", "option_a": "工程拆除", "option_b": "買受設備", "option_c": "委託專業、技術、資訊服務或維護保養", "option_d": "財產標售", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第02講整理勞務採購包括專業、技術、資訊服務、研究發展、訓練、維護保養、清運等。", "topic": "勞務採購", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，採購同時具有兩類以上性質時，原則上如何判斷採購類別？", "option_a": "以預算金額占比最高者決定", "option_b": "一律認定為工程採購", "option_c": "一律認定為勞務採購", "option_d": "由廠商任意選擇即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講整理混合標的判斷原則：同時具兩類以上性質者，以預算金額占比最高者決定採購類別。", "topic": "混合標的", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "依第02講的例子，畢業紀念冊與學生營養午餐之採購類型判斷，下列何者正確？", "option_a": "畢業紀念冊偏財物，學生營養午餐偏勞務", "option_b": "畢業紀念冊偏工程，學生營養午餐偏工程", "option_c": "畢業紀念冊偏勞務，學生營養午餐偏財物", "option_d": "二者均不得適用採購法", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講以畢業紀念冊偏財物、學生營養午餐偏勞務作為混合標的判斷例子。", "topic": "混合標的", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，工程採購達多少金額以上屬巨額採購？", "option_a": "2,000萬元以上", "option_b": "5,000萬元以上", "option_c": "1億元以上", "option_d": "2億元以上", "correct": "D", "points": 1, "required": "TRUE", "explanation": "第02講整理巨額採購中，工程為2億元以上。", "topic": "巨額採購", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，財物採購達多少金額以上屬巨額採購？", "option_a": "1,000萬元以上", "option_b": "2,000萬元以上", "option_c": "5,000萬元以上", "option_d": "1億元以上", "correct": "D", "points": 1, "required": "TRUE", "explanation": "第02講整理巨額採購中，財物為1億元以上。", "topic": "巨額採購", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，勞務採購達多少金額以上屬巨額採購？", "option_a": "100萬元以上", "option_b": "1,000萬元以上", "option_c": "2,000萬元以上", "option_d": "5,000萬元以上", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第02講整理巨額採購中，勞務為2,000萬元以上。", "topic": "巨額採購", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，工程或財物採購達多少金額以上屬查核金額？", "option_a": "100萬元以上", "option_b": "1,000萬元以上", "option_c": "2,000萬元以上", "option_d": "5,000萬元以上", "correct": "D", "points": 1, "required": "TRUE", "explanation": "第02講整理查核金額中，工程與財物為5,000萬元以上。", "topic": "查核金額", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，未達公告金額之採購大致指何種範圍？", "option_a": "10萬元以上未達100萬元", "option_b": "100萬元以上未達1,000萬元", "option_c": "1,000萬元以上未達5,000萬元", "option_d": "2億元以上", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講整理未達公告金額之採購為10萬元以上未達100萬元，採公開取得報價或企劃書為主。", "topic": "金額門檻", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，公告金額以上（100萬元以上）之採購，通常應採何種較完整方式處理？", "option_a": "公開、選擇性或限制性招標，需公告與完整招開評決程序", "option_b": "一律免公告，直接口頭洽購", "option_c": "一律不得招標", "option_d": "只需承辦人口頭詢價即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講整理公告金額以上採公開、選擇性或限制性招標，需公告與完整招開評決程序。", "topic": "辦理方式", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，下列何者最符合公開取得之定位？", "option_a": "未達公告金額之徵詢報價或企劃書程序", "option_b": "公告金額以上一定使用的決標方式", "option_c": "只限工程巨額採購使用", "option_d": "完全不需徵詢任何廠商", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講整理公開取得為未達公告金額之徵詢或比議價程序，對象為報價或企劃書。", "topic": "招標方式", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "依第02講，下列何者屬招標文件常見內容？", "option_a": "投標須知、標單、契約條款、技術規格或圖說", "option_b": "廠商私人日記", "option_c": "承辦人私人消費紀錄", "option_d": "與採購目的完全無關之文件", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講列舉招標文件包括招標公告、投標須知、標單、契約條款、技術規格或圖說、工期、保固、保證、評選與決標方式等。", "topic": "招標文件", "source": "Notion：政府採購法 / 第02講"}, {"id": "GPL02-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "依第02講實務提醒，下列何者容易構成形式審查不合而被廢標？", "option_a": "標單未簽章、未依規定裝封或押標金方式不合", "option_b": "廠商依法投標且文件齊備", "option_c": "招標文件載明合理規格", "option_d": "採購條件符合公平競爭", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第02講提醒標單未簽章、未依規定裝封或押標金未依指定方式或袋封，屬形式審查不合，容易被廢標。", "topic": "實務錯誤", "source": "Notion：政府採購法 / 第02講"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>
