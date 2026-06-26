@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第03講 Level 1｜不同方向</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第03講 Level 1｜不同方向 25題</h1>
+    <div class="meta">這版偏情境判斷、程序時點、角色混同、文件留痕與品質管理。單選題，點選後顯示解析。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL03B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某新進承辦人只讀政府採購法母法，不看施行細則。依第03講的學習方法，較適當的建議為何？", "option_a": "母法與施行細則對讀，才能建立程序與實務架構", "option_b": "只要背廠商名稱即可，不必看條文", "option_c": "只看新聞案例即可，不必看法規", "option_d": "完全依主管口頭指示，不用查資料", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講強調以母法條文加施行細則對讀，並連結主管機關與品質管理，建立系統化架構。", "topic": "母法與施行細則對讀", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某機關認為採購只要速度快，不必公開公平，也不用重視品質。依第03講，最主要的問題是什麼？", "option_a": "忽略第1條所強調的公平、公開、效率功能與品質管理", "option_b": "符合政府採購法所有目的", "option_c": "只要價格低就完全合法", "option_d": "只要廠商願意即可排除採購法", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講整理第1條目的包含公平公開程序、效率與功能、品質管理，不能只追求速度。", "topic": "採購目的", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某學校採購案包含增建校舍與修繕既有設備。依第03講，這最接近哪一類採購？", "option_a": "工程採購", "option_b": "財物採購", "option_c": "勞務採購", "option_d": "爭議處理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講將工程列為新建、增建、改建、修建等，增建校舍與修繕設備偏工程採購。", "topic": "採購範圍判斷", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "某機關承租機具設備並買受不動產權利。依第03講，最可能屬於何種採購範圍？", "option_a": "財物採購", "option_b": "勞務採購", "option_c": "工程採購", "option_d": "行政救濟", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講將財物列為買受、訂製、承租、不動產、機具設備等。", "topic": "採購範圍判斷", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某機關委任外部團隊辦理研究發展與專業技術服務。依第03講，最可能屬於何種採購？", "option_a": "勞務採購", "option_b": "財物採購", "option_c": "工程採購", "option_d": "標售財產", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講將勞務列為委任、雇用、專業或技術服務、研發等。", "topic": "採購範圍判斷", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "甲基金會辦理採購，政府補助占採購總額55%。依第03講，第4條較可能如何處理？", "option_a": "因補助占二分之一以上，準用採購法相關程序", "option_b": "因基金會不是政府機關，所以一定完全不適用", "option_c": "只要不是100%補助就不處理", "option_d": "由廠商自行決定是否開標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講整理法人或團體受機關補助辦理採購，補助金額占採購總額1/2以上者，準用採購法開標、比價、議價、決標等程序。", "topic": "補助納管", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "某團體接受A機關補助30%、B機關補助25%辦理同一採購。依第03講，多機關共同補助時應如何看待補助比例？", "option_a": "合併計算，合計已超過二分之一", "option_b": "只看A機關，所以未達二分之一", "option_c": "只看B機關，所以未達二分之一", "option_d": "兩個補助都不得計算", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講提到多機關共同補助時，金額合併計算。", "topic": "多機關補助", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某學校不熟採購程序，想委託市府或公務局代辦採購。依第03講，何者較正確？", "option_a": "機關得委託其他機關代辦採購", "option_b": "學校絕對不得委託任何機關代辦", "option_c": "只有廠商可以代辦採購", "option_d": "代辦後即完全不用遵守採購法", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講第5條整理機關得委託其他機關代辦採購，例如學校委託市府或公務局代辦。", "topic": "委託代辦", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "某受託機關一方面代辦採購，一方面又想成為同案廠商。依第03講，主要問題為何？", "option_a": "角色混同，受託機關不得同時為該採購之廠商", "option_b": "這是提高效率，完全沒有問題", "option_c": "只要價格低即可", "option_d": "只要未達公告金額就必然可以", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講提醒避免角色混同，受託機關不得同時為該採購之廠商。", "topic": "角色混同", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "承辦採購的人員發現投標廠商負責人是自己的近親。依第03講，較適當的處理為何？", "option_a": "因有利害關係，應迴避", "option_b": "可繼續辦理並優先照顧該廠商", "option_c": "只要不說就沒有問題", "option_d": "改用最低標即可排除利益迴避", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講第6條整理採購人員屬利害關係時應迴避，以維持公平交易並避免利益衝突。", "topic": "利益迴避", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某採購案包含設備供應700萬元、安裝工程300萬元。依第03講混合標的原則，較可能以何者決定採購性質？", "option_a": "以預算金額占比最高者決定，偏財物", "option_b": "一律認定工程", "option_c": "一律認定勞務", "option_d": "由最低價廠商決定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講第7條整理混合標的以預算金額占比最高者決定採購性質；本例設備金額較高，偏財物。", "topic": "混合標的", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "某採購案包含設備300萬元、工程施作900萬元。依第03講混合標的原則，較可能採何種程序方向？", "option_a": "因工程金額占比最高，偏工程採購", "option_b": "因有設備就一律財物採購", "option_c": "因有兩類就完全不用採購法", "option_d": "由承辦人任意決定，不需理由", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講提醒混合標的以金額比例決定採購性質，避免程序適用錯誤。", "topic": "混合標的", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "某承辦人遇到政府採購法令解釋、採購訓練與中央爭議處理問題。依第03講，全國主管機關是何者？", "option_a": "行政院公共工程委員會", "option_b": "地方地方法院", "option_c": "任一得標廠商", "option_d": "國稅局", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講第9條整理全國政府採購主管機關為行政院公共工程委員會，工程會亦負責法令宣導、解釋、訓練與協調等。", "topic": "主管機關", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "某機關要處理同等品、預算編列、底價訂定等作業基準。依第03講，這較接近第幾條的重點？", "option_a": "第11條採購資訊與規範", "option_b": "第1條立法目的", "option_c": "第4條補助納管", "option_d": "第70條品質管理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講第11條整理設置採購資訊中心，建立同等品、預算編列、底價訂定等作業基準。", "topic": "採購資訊基準", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "某工程案已達查核金額，承辦人準備開標。依第03講，開標文件與預算資料原則上應何時送上級或相關機關審閱或監辦？", "option_a": "至少於開標截止5日前", "option_b": "開標後才補送即可", "option_c": "驗收後才送即可", "option_d": "決標後10年內即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講第12條整理查核金額以上案件，開標至少於開標截止5日前送招標文件與預算資料請上級或相關機關審閱或派員監辦。", "topic": "查核金額程序", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "某查核金額以上案件開標與決標不同日。依第03講，預定決標日之前應於何時通知派員？", "option_a": "3日前", "option_b": "5日前", "option_c": "10日前", "option_d": "30日前", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講整理決標不與開標同日者，預定決標日3日前通知派員。", "topic": "查核金額程序", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "某查核金額以上工程準備驗收。依第03講，驗收前應在何時提送結算表、驗收證明等資料？", "option_a": "預定驗收5日前", "option_b": "驗收後隔年", "option_c": "決標後即可不再送件", "option_d": "開標當天", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講整理驗收應於預定驗收5日前提送結算表、驗收證明等，請上級監辦或辦理複驗。", "topic": "查核金額程序", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "某採購原未達查核金額，但變更追加後達查核金額。依第03講，較適當處理為何？", "option_a": "應補報上級備查", "option_b": "完全不必處理", "option_c": "直接刪除所有紀錄", "option_d": "改稱小額採購即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講第12條提醒變更致達查核金額時，應補報上級備查。", "topic": "變更追加", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "某採購金額為150萬元。依第03講口述公告金額100萬元以上之整理，較可能應如何處理？", "option_a": "屬公告金額以上，招標、比價、議價、決標、驗收應依規定公告與程序辦理", "option_b": "一定屬小額採購", "option_c": "完全免除所有程序", "option_d": "只能由一家公司議價且不用理由", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講第13條整理公告金額為100萬元以上，公告金額以上案件之招標、比價、議價、決標、驗收應依規定辦理公告與程序。", "topic": "公告金額程序", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "某公開招標案只有2家合格投標。依第03講口訣「三、二、一」，承辦人首先應注意何事？", "option_a": "公開招標原則至少3家合格投標", "option_b": "公開招標只要1家即可", "option_c": "比價一定要3家", "option_d": "議價一定要2家", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講整理公開招標原則至少3家合格投標，比價至少2家，議價得1家。", "topic": "投標家數", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "某最低標案件預算1,291萬元、底價1,150萬元、最低有效標1,078萬元。依第03講價格三要素，何者正確？", "option_a": "符合預算金額 ≥ 底價 ≥ 決標金額的邏輯", "option_b": "一定違反底價不得高於預算的概念", "option_c": "決標金額一定要高於底價", "option_d": "預算、底價、決標價完全不能比較", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講整理最低標體系下，預算金額通常大於或等於底價，底價通常大於或等於決標金額。", "topic": "價格關係", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "某決標公告只寫『某廠商得標』，未記載採購類型、金額級距、投標廠商與報價等。依第03講，主要缺失為何？", "option_a": "決標公告留痕不足，未完整記載重要資訊", "option_b": "這是最完整的公告格式", "option_c": "決標公告不得記載廠商資料", "option_d": "決標公告只需寫承辦人心情", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講整理決標公告應記載標案名稱、採購類型、金額級距、投標廠商名單與報價、得標廠商與決標金額等。", "topic": "決標公告", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "台南市親子館空調設備暨整修工程案例中，4家投標且採公開招標。依第03講，這個投標家數狀態如何？", "option_a": "滿足公開招標原則至少3家合格投標的要求", "option_b": "公開招標必須至少10家，因此一定不足", "option_c": "公開招標只能1家，因此4家違法", "option_d": "投標家數與採購程序完全無關", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講案例指出4家投標，滿足公開招標家數要件；公開招標原則至少3家。", "topic": "實務案例", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "某公共工程契約完全未規劃品質管理、環境保護、施工安全衛生機制。依第03講第70條精神，最主要問題為何？", "option_a": "未落實公共工程發包文件與契約應注意的品質、環保、安全衛生要求", "option_b": "只要價格低就完全足夠", "option_c": "這樣反而最符合第70條精神", "option_d": "公共工程不需要任何契約紀錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講品質管理補充指出公共工程發包文件與契約應落實品質管理、環境保護、施工安全衛生。", "topic": "品質管理", "source": "Notion：政府採購法 / 第03講 / 不同方向"}, {"id": "GPL03B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "某承辦人辦完採購後，未保存預算、底價、比議價紀錄、開決標紀錄、驗收與結算文件。依第03講，主要風險為何？", "option_a": "文件與留痕不足，影響後續查核、驗收與責任釐清", "option_b": "這是標準作法", "option_c": "政府採購不需要任何文件", "option_d": "只要得標廠商同意即可刪除所有紀錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第03講初學者提醒強調預算、底價、審查紀錄、開決標會議紀錄、決標公告、驗收與結算文件須完整保存。", "topic": "文件留痕", "source": "Notion：政府採購法 / 第03講 / 不同方向"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>

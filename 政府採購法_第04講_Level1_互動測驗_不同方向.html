@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第04講 Level 1｜不同方向</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第04講 Level 1｜不同方向 25題</h1>
+    <div class="meta">這版偏分類錯誤、趕工風險、材料文件、單價合約結算、分段啟用與查核缺失。單選題，點選後顯示解析。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL04B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某案同時含修繕、空調設備與水電，承辦人未分析各項金額比重，直接認定為財物採購。依第04講，主要風險為何？", "option_a": "混合標未依權重正確歸類，可能導致程序適用錯誤", "option_b": "只要有設備就一定是財物採購，沒有風險", "option_c": "採購分類完全不影響後續程序", "option_d": "可以由得標廠商事後決定採購類別", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講強調工程、財物、勞務可同時存在時，應依各項金額或比重判定主類別；分類錯誤會導致程序適用錯誤。", "topic": "分類錯誤風險", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某案修繕工程占61%，空調設備與水電占39%。依第04講的親子館案例精神，較適合如何認定？", "option_a": "以工程標認定", "option_b": "以勞務標認定", "option_c": "以財產出租認定", "option_d": "以人事任用認定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講案例中修繕工程占比最高約61%，故以工程標認定，空調等設備與水電屬次要。", "topic": "工程標認定", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某採購金額150萬元，承辦人認為未達1,000萬元所以不用公告。依第04講，錯誤在哪裡？", "option_a": "公告金額為100萬元以上，達公告金額仍須依法公告招標", "option_b": "所有採購都必須達2億元才需公告", "option_c": "公告金額與查核金額完全相同", "option_d": "150萬元一定屬小額採購", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講整理公告金額為100萬元以上，須公告招標；查核金額是另一個門檻，不可混淆。", "topic": "門檻誤判", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "某勞務採購預算約1,180萬元。依第04講台電案例，最應注意何事？", "option_a": "已達本講示意之查核金額，應注意主管機關查核範圍與程序", "option_b": "一定屬小額採購", "option_c": "只要是勞務就永遠不會達查核金額", "option_d": "只要結算可能低於預算，就不用管預算門檻", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講以台電勞務採購預算約1,180萬元為例，說明預算逾查核金額，結算則依實作量核算。", "topic": "查核金額", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某公告金額以上工程案，承辦人不公告，只私下找熟識廠商投標。依第04講公開招標精神，主要問題為何？", "option_a": "公開招標應讓任何廠商均可投標，私下找特定廠商違背公開競爭精神", "option_b": "公開招標本來就是只找熟識廠商", "option_c": "公告金額以上一律不得公告", "option_d": "採購法只保護承辦人方便", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講整理公開招標為任何廠商均可投標；達公告金額以上依法公告。", "topic": "公開招標", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "某工程因開幕壓力極大，承辦人說：『先封板，查驗照片以後再補。』依第04講，最主要風險是什麼？", "option_a": "未落實查驗即封板或隱蔽，可能導致驗收受阻、返工增加成本與工期", "option_b": "這是如期如質的標準作法", "option_c": "只要趕上開幕，品質紀錄可全部省略", "option_d": "封板後就不需要驗收", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講將趕工犧牲品質列為常見風險，特別提醒未落實查驗即封板或隱蔽會使驗收受阻並增加返工成本。", "topic": "趕工風險", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "某工程工期很短，但仍要求材料送驗、停留點照片、缺失改善紀錄。依第04講，這反映何種精神？", "option_a": "如期也要如質，工期壓縮與品質維持需同步", "option_b": "品質文件越多越違法", "option_c": "趕工時可完全排除職安衛", "option_d": "工程只要便宜即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講強調如期、如質，工期壓縮與品質維持需同步，品質管理、材料查驗與紀錄不可省略。", "topic": "如期如質", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某場館1至3樓需先開放，4樓暫作儲放區。依第04講，較完整的做法為何？", "option_a": "依契約與監造同意辦理分段啟用與工區劃分，並留存紀錄", "option_b": "使用單位想開就開，不需任何紀錄", "option_c": "分段啟用一定違法", "option_d": "只要口頭同意即可，不需契約或監造意見", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講親子館案例提到1–3樓優先開放、4樓管制作儲放區，配合時程辦理分段使用，需依契約及監造同意並留存紀錄。", "topic": "分段啟用", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "空調設備進場時，承包商只說『這台一定合格』，未提供規格書、檢測或能效資料。依第04講，缺少什麼？", "option_a": "材料設備進場前應檢附出廠證明、規格書、檢測報告或能效標示等文件", "option_b": "只缺少廠商廣告海報", "option_c": "完全沒有缺少，口頭保證即可", "option_d": "缺少的是承辦人私人同意書", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講列明材料設備進場前應檢附出廠證明、規格書、耐燃等級、SGS或等同檢測、能效標示等。", "topic": "材料文件", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "某機關認為品質保證完全是廠商的事，機關不用管理。依第04講，何者正確？", "option_a": "機關與廠商均負品質保證義務", "option_b": "只有廠商負責，機關完全無義務", "option_c": "只有民眾負責", "option_d": "品質保證與採購完全無關", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講品質查驗精神明確指出機關與廠商均負品質保證義務。", "topic": "品質責任", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某工程自主檢查表空白，專任工程人員督導紀錄也沒有。依第04講，查核時最可能出現什麼問題？", "option_a": "專任人員不到位且品管留痕不足，難以說明施工品質", "option_b": "表示品管非常完整", "option_c": "可以取代材料送驗", "option_d": "只要廠商口頭說明即可完全補正", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講列專任人員不到位為常見風險，自主檢查、督導紀錄空白時，查核時難以說明。", "topic": "專任工程人員", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "某工程拆除、粉刷、天花、油漆、水電、空調等工項均未設定查驗停留點。依第04講，最直接缺失為何？", "option_a": "缺少施工前、中、後之查驗與照片比對機制", "option_b": "表示工程一定更有效率且無風險", "option_c": "停留點只適用財產標售", "option_d": "停留點只能由廠商事後自行幻想", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講案例要求每工項設定查驗停留點，施工前、中、後拍照比對並建檔。", "topic": "查驗停留點", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "查核發現工地告示牌格式不符、職安查核表未填，承辦人只口頭要求改善，未留通知單與復驗紀錄。依第04講，哪裡不足？", "option_a": "缺失通知、改善期限、完成復驗紀錄未完整留存", "option_b": "口頭提醒已經完全足夠", "option_c": "職安查核表永遠不用填", "option_d": "工地告示牌格式與採購無關", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講列常見缺失並要求通知單、改善期限、完成復驗紀錄，以落實內外部稽核。", "topic": "缺失改善", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "某工程現場動線混亂、無警示標示、環境髒亂。依第04講，這主要違反何種管理重點？", "option_a": "職安衛與工地管理", "option_b": "單價合約結算", "option_c": "財物承租", "option_d": "採購資訊中心", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講要求依契約及職安規範設置工地主看板、維持環境整潔、動線與警示。", "topic": "職安衛", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "下列哪一組最能證明工程採購品管有落實？", "option_a": "自主檢查表、監造督導紀錄、材料送驗與檢測報告、照片台帳", "option_b": "廠商名片、承辦人私人筆記、飲料發票", "option_c": "只有一張完工自拍", "option_d": "口頭說明與LINE貼圖", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講將自主檢查表、監造督導紀錄、材料送驗與檢測報告、查核簡報、照片台帳列為文件化重點。", "topic": "工程採購文件", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "某勞務採購採單價合約，廠商主張不論實作量多少都應領滿預算。依第04講，何者正確？", "option_a": "單價合約通常按實作工程量計價，預算不等於保證給付", "option_b": "預算金額就是保證給付", "option_c": "單價合約完全不用量測", "option_d": "只要廠商主張即可照付", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講整理勞務採購多採單價合約，按實作工程量計價；預算為上限控制，非保證給付。", "topic": "勞務單價合約", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "台電案例中，預算約1,180萬元、結算約970多萬元。依第04講，這反映何種觀念？", "option_a": "結算依實際量與核驗結果，可能低於預算", "option_b": "結算必須等於預算", "option_c": "結算一定要高於預算", "option_d": "預算與結算完全禁止比較", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講台電案例說明預算為上限控制，結算依實際量、核驗結果，常態可能因量減而低於預算。", "topic": "預算與結算", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "單價合約執行中，承辦人未做現勘、數量確認、過程簽證，最後才想結算。依第04講，主要風險為何？", "option_a": "未嚴控工程量、變更與計價流程，容易產生結算爭議", "option_b": "這是避免爭議的最佳方式", "option_c": "單價合約不需要任何過程資料", "option_d": "只要預算足夠即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講提醒單價合約務必嚴謹量測、簽證與核價，避免爭議；管理機制包含現勘、數量確認、過程簽證、核量、驗收與結算審查。", "topic": "量測簽證", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "某工程招標文件未載明材料證明要求、施工查驗點、分段啟用條款與職安要求。依第04講，最可能造成何種問題？", "option_a": "履約管理與驗收標準不清，增加品質與爭議風險", "option_b": "這樣文件越少越合格", "option_c": "招標文件不得寫任何規格", "option_d": "只要廠商得標即可補上所有標準", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講工程採購操作清單要求招標文件載明規格、材料證明、施工查驗點、專任人員資格、驗收標準、分段啟用條款、職安要求、工期與違約條款等。", "topic": "招標文件", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "某工地告示牌未依規、環境未整理，查核被開缺失。依第04講，這屬於哪一類常見風險？", "option_a": "安衛疏漏", "option_b": "預算保證給付", "option_c": "混合標分類正確", "option_d": "單價合約核量完整", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講常見風險列出安衛疏漏，例如工地告示牌、環境整潔未依規，易被開列缺失。", "topic": "安衛疏漏", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "某新手一開始就寫招標文件，卻還沒確認工程、財物、勞務主類別與金額門檻。依第04講，應先做什麼？", "option_a": "先把類別與門檻判對，再談程序", "option_b": "先找廠商報價，不需分類", "option_c": "先付款，再補招標文件", "option_d": "先開幕，全部程序事後再說", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講快速心得明確提醒：先把類別與門檻判對，再談程序。", "topic": "工程採購新手順序", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "親子館案例工期約2個月且遇雨季、場域仍有人員使用。依第04講，承辦人最應同步注意何者？", "option_a": "分區施工、工區管理、職安衛與品質紀錄", "option_b": "完全省略監造", "option_c": "取消材料送驗", "option_d": "不做照片台帳", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講指出該案例工期短、遇雨季且場域有人員使用，因此更要兼顧分段啟用、工區管理、職安衛、材料查驗與紀錄。", "topic": "親子館案例", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "某案已達查核門檻，但機關認為只要內部知道即可，不必依程序受查核。依第04講，問題為何？", "option_a": "達查核金額以上即屬主管機關查核範圍，應依程序辦理", "option_b": "查核金額只是參考，永遠不用理會", "option_c": "只有小額採購才會被查核", "option_d": "只要結算低於預算就可排除所有查核程序", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講整理達查核金額以上受上級機關或目的事業主管機關查核；台電案例亦以預算約1,180萬元達查核金額說明。", "topic": "查核範圍", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "廠商改善管線外露缺失後，機關沒有復驗紀錄。依第04講，哪個環節不足？", "option_a": "完成復驗紀錄與留痕", "option_b": "招標公告", "option_c": "財產標售", "option_d": "共同供應契約", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講要求缺失通知、改善期限、完成復驗紀錄，落實內外部稽核。", "topic": "缺失與復驗", "source": "Notion：政府採購法 / 第04講 / 不同方向"}, {"id": "GPL04B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "若將本講互動式HTML放到GitHub Pages供自己練習，從題庫循環角度看，最主要用途為何？", "option_a": "把每講考點轉為可重複刷題的靜態網頁", "option_b": "取代所有法規查詢與實務判斷", "option_c": "讓題目自動變成正式法條", "option_d": "讓採購程序完全不用留文件", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第04講產出的HTML屬靜態互動測驗，可作為每講刷題網站的一部分；但正式實務仍須回查最新法規與機關規定。", "topic": "網站刷題應用", "source": "Notion：政府採購法 / 第04講 / 不同方向"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>
