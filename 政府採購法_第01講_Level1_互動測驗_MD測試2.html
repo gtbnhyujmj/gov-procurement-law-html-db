@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第01講 Level 1｜MD測試2</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第01講 Level 1｜25題互動測驗</h1>
+    <div class="meta">MD 工單測試2。單選題，點選選項後立即顯示正誤與解析。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL01-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "依第01講整理，政府採購法第1條所揭示的目的，下列何者最不符合本講內容？", "option_a": "建立採購制度", "option_b": "公平公開採購程序", "option_c": "提升採購效率與功能", "option_d": "使採購完全不受監督", "correct": "D", "points": 1, "required": "TRUE", "explanation": "第01講整理第1條目的為建立制度、公平公開、提升效率與功能、確保品質；完全不受監督顯然不符。", "topic": "立法目的", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "第01講給的採購法目的口訣為何？", "option_a": "公平、公開、效率、品質", "option_b": "低價、快速、秘密、彈性", "option_c": "補助、審計、處罰、監察", "option_d": "公告、比價、議價、保固", "correct": "A", "points": 1, "required": "TRUE", "explanation": "本講明確列出考試口訣：公平、公開、效率、品質。", "topic": "立法目的", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，政府採購法第2條所整理的採購三大類為何？", "option_a": "工程、財物、勞務", "option_b": "工程、補助、審計", "option_c": "財物、稅務、人事", "option_d": "勞務、行政、司法", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第01講將採購分為工程採購、財物採購與勞務採購。", "topic": "採購類型", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "下列何者依第01講最可能被歸類為工程採購？", "option_a": "採購辦公室印表機", "option_b": "委託顧問公司授課", "option_c": "辦理下水道工程", "option_d": "租用公務車", "correct": "C", "points": 1, "required": "TRUE", "explanation": "本講列舉建築、土木、水利、交通、環保、能源、醫療福利設施等，並以道路、捷運、下水道工程為例。", "topic": "工程採購", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某機關購買電腦、印表機與辦公家具，依第01講最可能屬於何種採購？", "option_a": "工程採購", "option_b": "財物採購", "option_c": "勞務採購", "option_d": "限制性採購", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第01講列舉電腦、印表機、辦公家具、公務車為財物採購例子。", "topic": "財物採購", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "某機關委外辦理系統維護與教育訓練，依第01講最可能屬於何種採購？", "option_a": "工程採購", "option_b": "財物採購", "option_c": "勞務採購", "option_d": "巨額採購", "correct": "C", "points": 1, "required": "TRUE", "explanation": "勞務採購包含資訊服務、維修、訓練、專業服務、技術服務等。", "topic": "勞務採購", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，下列何者屬於一定適用政府採購法的主體？", "option_a": "政府機關", "option_b": "未受補助的私人公司", "option_c": "純私人買賣雙方", "option_d": "沒有政府資金的民間社團", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第01講列出一定適用者包含政府機關、公立學校與公營事業。", "topic": "適用主體", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，下列何者組合均屬一定適用政府採購法？", "option_a": "政府機關、公立學校、公營事業", "option_b": "私立學校、私人公司、個人商號", "option_c": "供應商、下包商、投標廠商", "option_d": "自然人、民間社團、外國公司", "correct": "A", "points": 1, "required": "TRUE", "explanation": "本講明列政府機關、公立學校、公營事業一定適用。", "topic": "適用主體", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，法人或團體接受政府補助時，何種情形也要適用採購法？", "option_a": "補助超過50%，且達公告金額以上", "option_b": "只要收到1元補助即一律適用", "option_c": "補助未達半數但廠商同意", "option_d": "只要採購項目是勞務即一律適用", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第01講整理為：補助超過50%，且達公告金額以上，也要適用採購法。", "topic": "補助適用", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，採購流程中『審標』之後通常接續何者？", "option_a": "預算", "option_b": "招標", "option_c": "決標", "option_d": "保固", "correct": "C", "points": 1, "required": "TRUE", "explanation": "本講流程為預算→招標→審標→決標→訂約→履約→驗收→保固。", "topic": "採購流程", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，採購流程的最後階段為何？", "option_a": "預算", "option_b": "招標", "option_c": "決標", "option_d": "保固", "correct": "D", "points": 1, "required": "TRUE", "explanation": "第01講將流程整理到最後為保固。", "topic": "採購流程", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，公開招標最主要的判斷特徵是什麼？", "option_a": "對外公告，不特定廠商皆可投標", "option_b": "不經公告，直接找特定廠商", "option_c": "只限合格名單中的廠商投標", "option_d": "一律只能議價不能比價", "correct": "A", "points": 1, "required": "TRUE", "explanation": "本講整理公開招標特徵為對外公告，不特定廠商皆可投標。", "topic": "公開招標", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，公開招標的公式為何？", "option_a": "公告 → 投標 → 開標", "option_b": "資格審查 → 名單 → 邀標", "option_c": "議價 → 比價 → 保固", "option_d": "履約 → 驗收 → 招標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第01講直接整理公開招標公式為公告→投標→開標。", "topic": "公開招標", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，選擇性招標與公開招標最大的差異在於何者？", "option_a": "選擇性招標先審資格，再邀請合格廠商投標", "option_b": "選擇性招標完全不得審查資格", "option_c": "公開招標一律不得公告", "option_d": "公開招標只限一家廠商參與", "correct": "A", "points": 1, "required": "TRUE", "explanation": "選擇性招標的核心是資格審查、合格名單、再邀請投標。", "topic": "選擇性招標", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，限制性招標通常適用於下列何種情形？", "option_a": "緊急情況或特殊需求", "option_b": "任何普通財物採購皆必須使用", "option_c": "所有採購都不得使用", "option_d": "只有三家以上廠商才能使用", "correct": "A", "points": 1, "required": "TRUE", "explanation": "本講整理限制性招標適用於緊急情況、特殊需求、法律規定情形等。", "topic": "限制性招標", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，公開招標、選擇性招標、限制性招標的條文對應何者正確？", "option_a": "公開19、選擇性20/21、限制性22", "option_b": "公開1、選擇性2、限制性3", "option_c": "公開22、選擇性19、限制性20/21", "option_d": "公開101、選擇性102、限制性103", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第01講整理為公開招標第19條、選擇性招標第20與21條、限制性招標第22條。", "topic": "條文對應", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "依第01講整理，公告金額為多少元以上？", "option_a": "10萬元以上", "option_b": "50萬元以上", "option_c": "100萬元以上", "option_d": "500萬元以上", "correct": "C", "points": 1, "required": "TRUE", "explanation": "本講明列公告金額為100萬元以上。", "topic": "採購金額", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "依第01講整理，小額採購為多少元以下？", "option_a": "1萬元以下", "option_b": "10萬元以下", "option_c": "50萬元以下", "option_d": "100萬元以下", "correct": "B", "points": 1, "required": "TRUE", "explanation": "本講整理小額採購為10萬元以下，可直接採購。", "topic": "採購金額", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "依第01講整理，工程採購的巨額採購門檻為何？", "option_a": "1,000萬元以上", "option_b": "2,000萬元以上", "option_c": "5,000萬元以上", "option_d": "2億元以上", "correct": "D", "points": 1, "required": "TRUE", "explanation": "第01講整理工程採購巨額門檻為2億元以上。", "topic": "採購金額", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "依第01講整理，財物、勞務的巨額採購門檻為何？", "option_a": "100萬元以上", "option_b": "1,000萬元以上", "option_c": "2,000萬元以上", "option_d": "2億元以上", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第01講整理巨額採購中，財物與勞務為2,000萬元以上。", "topic": "採購金額", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "依第01講整理，第一次公開招標與公開取得報價原則上各需幾家以上？", "option_a": "均為1家以上", "option_b": "均為2家以上", "option_c": "均為3家以上", "option_d": "公開招標1家，公開取得報價2家", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第01講表格整理第一次公開招標與公開取得報價均為3家以上。", "topic": "開標家數", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "依第01講整理，比價與議價的家數何者正確？", "option_a": "比價2家以上，議價1家", "option_b": "比價1家，議價2家以上", "option_c": "比價3家以上，議價3家以上", "option_d": "比價與議價均不得少於5家", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第01講整理比價為2家以上，議價為1家。", "topic": "開標家數", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，下列何者最符合最低標的特色？", "option_a": "價格最低者得標，但品質可能較差", "option_b": "只看技術，不看價格", "option_c": "必須綜合評分後整體最佳", "option_d": "只能用於原住民族地區採購", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第01講整理最低標為價格最低者得標，優點是省錢，缺點是品質可能較差。", "topic": "決標方式", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，下列何者最符合最有利標？", "option_a": "只以最低價格決定得標", "option_b": "綜合價格、品質、技術、經驗等整體評估", "option_c": "只能由一家廠商議價", "option_d": "不需任何評估即可決標", "correct": "B", "points": 1, "required": "TRUE", "explanation": "最有利標是綜合評估價格、品質、技術、經驗等，選整體最佳者。", "topic": "決標方式", "source": "Notion：政府採購法 / 第01講"}, {"id": "GPL01-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "依第01講，下列何者正確？", "option_a": "為規避採購法而故意分批，原則上不可以", "option_b": "原本120萬採購拆成兩個60萬一定合法", "option_c": "不同標的、不同地點、不同需求也一律不得分別採購", "option_d": "原住民族地區未達公告金額採購不得優先由原住民法人承辦", "correct": "A", "points": 1, "required": "TRUE", "explanation": "本講整理不得故意分批以規避採購法；若是不同標的、地點或需求，才可能分別採購。原住民族地區未達公告金額採購，應優先由原住民個人、機構或法人承辦。", "topic": "分批採購與原住民族保障", "source": "Notion：政府採購法 / 第01講"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>
