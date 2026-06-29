@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第16講 Level 1｜再一次</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第16講 Level 1｜再一次 25題</h1>
+    <div class="meta">第二套：偏財物/勞務採購程序題，包含最有利標、評選、招標文件、無效標、資格文件、技術規格、押標金、開標減價、低價異常、驗收與付款。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL16B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "依第16講，本講進入財物、勞務採購的哪一階段實務？", "option_a": "招標文件、開標、決標、驗收實務", "option_b": "刑事羈押審查", "option_c": "婚姻登記程序", "option_d": "土地徵收補償", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講指出，本講開始進入財物、勞務採購的招標文件、開標、決標、驗收實務，考試愛出程序題。", "topic": "講次主軸", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某資訊服務案只用最低價決標，結果廠商低價搶標、品質下降、履約困難。依第16講，這正是最低標的何種風險？", "option_a": "低價搶標導致品質與履約風險", "option_b": "最低標一定品質最好", "option_c": "最低標完全無風險", "option_d": "最低標只適用財產變賣", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講比較最低標與最有利標，指出最低標雖省錢，但缺點是低價搶標、品質下降、履約困難。", "topic": "最低標風險", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某顧問服務案需要比較技術、品質、能力、經驗與價格。依第16講，較符合何種決標趨勢？", "option_a": "最有利標", "option_b": "只看最低標", "option_c": "財產出租", "option_d": "完全不用決標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講指出現代趨勢為最有利標，評估技術、品質、能力、經驗、價格，由綜合最佳者得標。", "topic": "最有利標", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "依第16講，最有利標希望達成的採購三原則為何？", "option_a": "如期、如質、如實", "option_b": "如價、如夢、如雷", "option_c": "如期、如訴、如判", "option_d": "如數、如風、如火", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講整理最有利標目的，是希望達成如期、如質、如實完成採購，避免惡性低價競爭。", "topic": "採購三原則", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某機關採購PMP訓練課程與專案管理顧問服務。依第16講，通常採何種制度？", "option_a": "評選制度", "option_b": "財產變賣制度", "option_c": "刑事審判制度", "option_d": "完全免評估制度", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講PMP專案管理採購案例指出，訓練課程、顧問服務、專案管理通常採評選制度。", "topic": "PMP採購案例", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "依第16講，PMP或顧問服務評選項目不包括下列何者？", "option_a": "廠商履約能力、講師資歷、課程內容、成本分析、簡報表現", "option_b": "講師資歷", "option_c": "課程內容", "option_d": "廠商老闆星座", "correct": "D", "points": 1, "required": "TRUE", "explanation": "第16講列舉評分項目包含廠商履約能力、講師資歷、課程內容、成本分析、簡報表現。", "topic": "評選項目", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "依第16講，評審委員將廠商排第1名、第2名、第3名，再統計結果，稱為何種方法？", "option_a": "序位法", "option_b": "抽籤法", "option_c": "拍賣法", "option_d": "分批法", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講指出序位法是評審委員排序第1名、第2名、第3名，最後統計結果，常用於顧問案、專業服務、教育訓練。", "topic": "序位法", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某招標案只有公告，沒有投標須知、標單、契約條款與技術規範。依第16講，主要問題為何？", "option_a": "招標文件組成不完整", "option_b": "公告已足夠，其他文件都不需要", "option_c": "技術規範不得出現", "option_d": "契約條款只能決標後口頭約定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講列出招標文件至少包括招標文件、投標須知、投標標單、廠商聲明書、契約條款、技術規範、補充說明書。", "topic": "招標文件", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "某廠商投標標封未密封。依第16講，通常可能如何處理？", "option_a": "判定無效標", "option_b": "必然得標", "option_c": "直接改成最有利標", "option_d": "視為已驗收", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講列出標封未密封為常見無效標情形。", "topic": "無效標", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "某廠商未附押標金就投標。依第16講，通常可能構成何者？", "option_a": "無效標", "option_b": "自動減價", "option_c": "履約完成", "option_d": "驗收合格", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講無效標考點包括未附押標金、未繳押標金。", "topic": "無效標", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某廠商投標文件逾期送達。依第16講，通常可能構成何者？", "option_a": "無效標", "option_b": "最有利標", "option_c": "後續擴充", "option_d": "低於底價80%", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講投標文件無效情形包含逾期送達。", "topic": "無效標", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "某廠商任意塗改標單，導致標價不明。依第16講，通常可能構成何者？", "option_a": "無效標", "option_b": "自動合格", "option_c": "分期付款", "option_d": "採購三原則", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講列出標價不清楚、未蓋章、任意塗改標單等均屬投標文件無效情形。", "topic": "無效標", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "依第16講，廠商資格文件通常要求下列何者？", "option_a": "公司登記證明、納稅證明、履約能力證明、專業資格文件", "option_b": "廠商員工家庭旅遊照片", "option_c": "承辦人私人推薦信", "option_d": "社群媒體粉絲數", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講列出廠商資格文件通常要求公司登記證明、納稅證明、履約能力證明、專業資格文件。", "topic": "廠商資格文件", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "依第16講，自98年4月起，何種文件不再作為資格審查必要文件？", "option_a": "營利事業登記證", "option_b": "納稅證明", "option_c": "履約能力證明", "option_d": "專業資格文件", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講指出98年重大修正：營利事業登記證自98年4月起不再作為資格審查必要文件。", "topic": "98年修正", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "某機關規格直接寫『ASUS限定』。依第16講與第26條，主要問題為何？", "option_a": "不得指定特定品牌，應以性能規格表示或加註同等品", "option_b": "指定品牌一定合法", "option_c": "性能規格不得使用", "option_d": "同等品不得出現", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講第26條重點指出，機關不得指定特定品牌；若不得不引用，必須加註或同等品。", "topic": "技術規格", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "依第16講，下列何者較符合性能規格寫法？", "option_a": "i7 CPU以上、32GB RAM以上、1TB SSD以上", "option_b": "ASUS限定", "option_c": "Dell限定", "option_d": "HP限定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講舉例，規格應以性能表示，例如i7 CPU以上、32GB RAM以上、1TB SSD以上，而非限定品牌。", "topic": "性能規格", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "依第16講，押標金通常於何時繳納，其功能為何？", "option_a": "投標時繳納，用於防止亂投標", "option_b": "驗收後繳納，用於付款", "option_c": "保固期滿繳納，用於抽籤", "option_d": "決標公告後由機關繳給廠商", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講指出押標金於投標時繳納，功能是防止亂投標。", "topic": "押標金", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "依第16講，履約保證金通常於何時繳納，其功能為何？", "option_a": "得標後繳納，用於確保履約", "option_b": "投標前繳納，用於防止亂投標", "option_c": "驗收紀錄後補繳", "option_d": "由未得標廠商共同繳納", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講指出履約保證金於得標後繳納，功能是確保履約。", "topic": "履約保證金", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "某財物採購契約只寫『買設備一批』，未寫品項、數量、規格、交貨地點與時間。依第16講，主要問題為何？", "option_a": "財物採購履約內容不明確", "option_b": "財物採購不得寫規格", "option_c": "交貨地點不得約定", "option_d": "只要廠商知道即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講指出財物採購要寫品項、數量、規格、交貨地點、交貨時間。", "topic": "履約內容明確", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "某勞務採購契約未寫工作範圍、工作內容、期限與人力需求。依第16講，主要問題為何？", "option_a": "勞務採購履約內容不明確", "option_b": "勞務契約只需寫總價", "option_c": "勞務採購不得約定期限", "option_d": "人力需求只由廠商事後決定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講指出勞務採購要寫工作範圍、工作內容、工作期限、人力需求。", "topic": "勞務履約內容", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "A廠商540萬、B廠商520萬、C廠商500萬，若500萬仍高於底價，依第16講，誰通常優先減價？", "option_a": "最低價廠商C", "option_b": "最高價廠商A", "option_c": "中間價廠商B", "option_d": "由未投標廠商減價", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講開標與減價程序舉例指出，若最低標價仍高於底價，最低價廠商優先減價。", "topic": "開標減價", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "某案預算500萬，機關卻決標520萬。依第16講，主要問題為何？", "option_a": "決標金額不得超過預算金額", "option_b": "決標金額越高越好", "option_c": "預算與決標金額無關", "option_d": "只要廠商同意即可超預算", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講強調預算金額應大於等於決標金額，不可決標金額大於預算金額。", "topic": "預算與決標金額", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "某標價低於底價80%，機關懷疑顯不合理與低價搶標。依第16講，機關得要求何者？", "option_a": "要求廠商提出說明或提供擔保", "option_b": "一定直接決標且不得審查", "option_c": "一定免驗收", "option_d": "由其他廠商補價", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講第58條重點指出，標價低於底價80%可能顯不合理，機關得要求提出說明或提供擔保。", "topic": "低於底價80%", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "依第16講，驗收紀錄應載明下列何者？", "option_a": "案號、驗收標的、數量、日期、結果", "option_b": "承辦人私人行程", "option_c": "廠商廣告文案", "option_d": "評審委員星座", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講驗收重點指出，驗收紀錄應載明案號、驗收標的、數量、日期、結果。", "topic": "驗收紀錄", "source": "Notion：政府採購法 / 第16講 / 再一次"}, {"id": "GPL16B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "某案買10台設備，其中3台規格不符。依第16講，可採何種處理方式？", "option_a": "退貨、換貨、改善、復驗", "option_b": "一律視為全部合格", "option_c": "不得要求改善", "option_d": "直接付款且不得記錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第16講驗收不合格處理指出，例如10台設備中3台規格不符，可退貨、換貨、改善、復驗。", "topic": "驗收不合格與付款", "source": "Notion：政府採購法 / 第16講 / 再一次"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+render();
+</script>
+</body>
+</html>
