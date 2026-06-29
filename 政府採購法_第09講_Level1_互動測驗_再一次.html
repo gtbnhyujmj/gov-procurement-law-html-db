@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第09講 Level 1｜再一次</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第09講 Level 1｜再一次 25題</h1>
+    <div class="meta">第二套：偏程序踩雷、示疑逾期、分段開標錯段、國內偏好上限、底價留痕、三家門檻、減價比價、協商公平與異常低價。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL09B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某廠商對招標文件規格有疑義，但未在文件規定期限內提出，等決標後才主張規格不明。依第09講，主要問題為何？", "option_a": "示疑應在文件規定期限內以書面提出，逾期可能影響其權利主張", "option_b": "廠商只能用電話示疑，不得書面", "option_c": "招標文件疑義只能驗收後提出", "option_d": "決標後第一次示疑一定使廠商直接得標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§41強調供應商應在文件規定期限內以書面示疑，並保留書面軌跡。", "topic": "示疑逾期", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "機關修改招標文件的重要規格後，只私下通知一家廠商，且未評估延長等標期。依第09講，何者最正確？", "option_a": "重要變更應書面通知並必要時公告、延長等標期", "option_b": "只通知一家廠商即可維持公平", "option_c": "招標文件不得任何變更", "option_d": "變更後只能直接廢標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§41指出機關變更或補充招標文件，應書面通知並視需要延長等標期，必要時公告。", "topic": "文件變更", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某案等標期為12日，機關只給1日示疑期間。依第09講細則整理，最低示疑期間較合理應為何者？", "option_a": "至少等標期1/4，12日的1/4為3日", "option_b": "固定只能1日", "option_c": "必須等標期全程12日", "option_d": "示疑期間不得設定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講整理可請求示疑期間至少為等標期1/4，不足1日以1日計。12日的1/4為3日。", "topic": "示疑期間", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "某分段開標案，承辦人於資格標階段誤拆價格標封。依第09講，主要風險為何？", "option_a": "違反分段開標文件密封與錯段不得開啟之公平要求", "option_b": "價格標越早拆越公平", "option_c": "分段開標必須一次全部拆封", "option_d": "資格標不能先開", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§42提醒未開啟之段文件保持密封，流程與標示要明確，避免錯段開啟。", "topic": "分段開標", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某案採資格、規格、價格分段開標。廠商資格未通過，卻要求進入價格標。依第09講，何者正確？", "option_a": "未通過前段不得進入後段", "option_b": "未通過資格仍一定可開價格標", "option_c": "分段開標不得設資格段", "option_d": "價格標應先於資格標開啟", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§42整理可採分段開標或分段投標，未通過前段不得進入後段。", "topic": "分段開標", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "某評選案將國內貨品比率、技術移轉、投資、外銷協助加分合計設為50%。依第09講，主要問題為何？", "option_a": "該類加分合計不得逾1/3，50%可能超過上限", "option_b": "國內化加分至少必須80%", "option_c": "國內化加分完全不得出現", "option_d": "只要是本國品加分就完全不受限制", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§43指出國內貨品比率、技術移轉、投資、外銷協助等可列評選要素，但合計權重或金額比例不得逾1/3。", "topic": "國內偏好", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "某GPA適用標案仍直接設定本國廠商優惠，未檢查國際承諾。依第09講，應先做何事？", "option_a": "確認該偏好是否受國際協定限制或可否適用", "option_b": "所有GPA標案都可無限制本國優先", "option_c": "GPA標案不需要任何公告", "option_d": "只要國內廠商同意即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講提醒涉及國際承諾者從其規定，標案若受GPA拘束，應先確認偏好可否適用。", "topic": "國際協定", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某廠商認為開標時不需派代表，結果現場發生減價與程序疑義，無人即時處理。依第09講，實務建議為何？", "option_a": "建議派代表出席，以因應減價與程序疑義", "option_b": "廠商代表不得出席開標", "option_c": "只有承辦人親屬可出席", "option_d": "開標現場不得處理任何程序疑義", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§45實務提醒，廠商負責人、代理或授權代表可出席，建議派代表以因應減價與程序疑義。", "topic": "開標出席", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "某開標程序只有口頭宣布結果，未記錄廠商名稱、家數、過程要點與結果。依第09講，缺少何者？", "option_a": "完整開標紀錄", "option_b": "國內貨品比率", "option_c": "共同投標協議書", "option_d": "異常低價擔保", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§45要求全程留存紀錄，實務上應記錄名稱、家數、過程要點與結果。", "topic": "開標紀錄", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "某底價完全由承辦人憑感覺設定，未有市場調查或估算表。依第09講，主要缺失為何？", "option_a": "底價基礎應可稽核，並參酌市場成本與行情", "option_b": "底價只能隨機抽籤", "option_c": "底價不得參考市場行情", "option_d": "底價應由投標廠商自行核定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§46指出底價應依圖說、規範、契約，參酌市場成本與行情訂定，並簽報核定留痕。", "topic": "底價基礎", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某案不訂底價，但招標文件未載明理由，也未明定決標條件。依第09講，主要問題為何？", "option_a": "不訂底價時，理由與決標條件或原則要具體明確", "option_b": "不訂底價永遠不需任何理由", "option_c": "不訂底價時由廠商決定誰得標", "option_d": "不訂底價只能用抽籤", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§47整理得不訂底價，但須在文件中載明理由與決標條件或原則。", "topic": "不訂底價", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "某公開招標第一次投標只有2家，機關仍逕行開標，且無例外依據。依第09講，主要問題為何？", "option_a": "公開招標原則須3家以上投標方得開標", "option_b": "公開招標只能1家開標", "option_c": "公開招標不得有3家以上", "option_d": "投標家數與開標完全無關", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§48整理公開招標原則須3家以上廠商投標方得開標，例外另定。", "topic": "三家門檻", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "某限制性招標案只找1家型錄作為比價依據，沒有說明為何無法取得其他資料。依第09講，較佳方向為何？", "option_a": "原則應擇取至少3家廠商書面報價或型錄作為比價依據", "option_b": "限制性招標禁止取得報價", "option_c": "限制性招標只准看得標廠商型錄", "option_d": "比價依據不得留存", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§49整理限制性招標或無法達3家的情形，原則應擇取至少3家廠商之書面報價或型錄等作為比價依據。", "topic": "限制性比價", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "開標後發現有借牌、冒名投標與串標跡象。依第09講，機關較應如何處理？", "option_a": "研判不予開標或不予決標，必要時撤銷決標或重辦", "option_b": "無條件照常決標", "option_c": "直接給串標廠商優先得標", "option_d": "刪除紀錄避免麻煩", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§50整理借牌、冒用、重大瑕疵、串標等可能不予開標或不予決標；撤銷決標或取消契約可依原順位或重辦招標處理。", "topic": "重大瑕疵", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "某案採多家得標，但招標文件未明定分攤方式、報價規則與評選基準。依第09講，缺少何者？", "option_a": "多家得標所需之分攤方式、報價規則與評選基準", "option_b": "底價保密期限", "option_c": "示疑期間1/4", "option_d": "國內偏好3%", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§52整理多家得標須於文件明定分攤方式、報價規則與評選基準，公告與紀錄也須詳載。", "topic": "多家得標", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "某廠商以外幣報價，機關需換算比較。依第09講，原則上以何方式換算？", "option_a": "以新臺幣，按臺銀賣出匯率換算", "option_b": "由得標廠商自行決定匯率", "option_c": "固定用1比1換算", "option_d": "不得接受任何外幣報價", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§52整理外幣報價換算以新臺幣、按臺銀賣出匯率。", "topic": "外幣換算", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "最低價仍超過底價，機關未通知最低價減價一次，直接找其他廠商比價。依第09講，主要問題為何？", "option_a": "超底價時應先通知最低價減價一次", "option_b": "超底價時不得減價", "option_c": "超底價時必須直接決標", "option_d": "超底價時只能抽籤", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§53指出最低價超底價時，先通知最低價減價一次；仍超過才可對符合規定者比價。", "topic": "減價流程", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "某案比價進行多輪，但每輪未公布前次最低價，也未留下紀錄。依第09講，主要缺失為何？", "option_a": "比價最多3次，且每次應公布前次最低價並留痕", "option_b": "比價不得公布任何資訊", "option_c": "比價可無限次且不需紀錄", "option_d": "比價只能由廠商自行操作", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§53整理比價最多3次，每次公布前次最低價；實務也要求公告與紀錄完整。", "topic": "比價留痕", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "查核金額以上標案最低價與底價差異過大，承辦人想直接決標。依第09講，較妥當作法為何？", "option_a": "保留決標，請廠商書面說明並報請核定後續處置", "option_b": "無條件立即決標", "option_c": "直接公開底價給所有廠商", "option_d": "直接改為不訂底價", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§53提醒查核金額以上標案最低價與底價差異超過主管規定門檻時，應保留決標，請廠商書面說明，報請核定後續處置。", "topic": "查核金額價差", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "某機關臨時決定改採最有利標，但招標文件未事先揭示評選項目與權重。依第09講，主要問題為何？", "option_a": "最有利標須事先揭示並經核准，文件明定評選項目與權重", "option_b": "最有利標不需任何評選標準", "option_c": "最有利標只能由承辦人自由判斷", "option_d": "最有利標不得使用技術項目", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§55整理採最有利標須事先揭示並經核准，文件明定評選項目與權重。", "topic": "最有利標", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "最有利標協商時，機關只給其中一家候選廠商改善機會，未通知其他候選廠商。依第09講，主要問題為何？", "option_a": "協商應公平對待候選廠商並留痕", "option_b": "協商只能找一家熟悉廠商", "option_c": "協商不得有任何紀錄", "option_d": "協商時必須公開所有廠商機密", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§57指出協商應公平對待候選廠商，開標、投標、審標與協商全程留痕。", "topic": "協商公平", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "某最低標價格明顯偏低，可能影響材料品質與履約能力。依第09講，機關可要求廠商提出何者？", "option_a": "說明與擔保", "option_b": "私人道歉信", "option_c": "放棄履約文件", "option_d": "刪除報價紀錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§58整理最低標總價或部分標價顯不合理，足以影響品質或履約能力者，機關得要求說明與擔保。", "topic": "異常低價", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "依第09講，異常低價審查重點不包括下列何者？", "option_a": "成本結構、工法工期、材料來源、履約計畫、人機料配置", "option_b": "廠商私人星座", "option_c": "保固方案", "option_d": "風險儲備", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第09講§58實務重點列出成本結構、工法/工期、材料來源、履約計畫、人機料配置、保固方案、風險儲備等審查項目。", "topic": "低價審查", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "某供應商對同一市場、同類標的報出高於其最低價的不合理價格。依第09講，涉及何種控管？", "option_a": "價格一致性與費用控制", "option_b": "分段開標密封", "option_c": "示疑期間1/4", "option_d": "國內偏好3%", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§59整理供應商不得對同一市場、同類標的報出高於其最低之不合理價格，仲介費、管理費等亦依法管控。", "topic": "價格一致性", "source": "Notion：政府採購法 / 第09講 / 再一次"}, {"id": "GPL09B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "廠商對減價與比價結果有疑義，但超過文件約定期間才要求說明。依第09講，主要風險為何？", "option_a": "逾期可能視為自我限制，應於法定或文件約定期間內請求說明", "option_b": "廠商永遠不得請求說明", "option_c": "請求說明一定使廠商直接得標", "option_d": "結果說明只能由其他廠商提出", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第09講§60整理廠商對減價、比價結果或底價有疑義，得於法定或文件約定期間內請求說明；逾期視為自我限制。", "topic": "結果說明", "source": "Notion：政府採購法 / 第09講 / 再一次"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>

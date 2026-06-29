@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第10講 Level 1｜再一次</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第10講 Level 1｜再一次 25題</h1>
+    <div class="meta">第二套：偏決標方式選擇、同質/異質情境、最有利標必要性、評選委員會、工作小組、簡報詢答、標價偏低與價格合理性。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL10B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某機關採購標準規格影印紙，各家產品在品質、功能、規格幾乎無實質差異。依第10講，較適合何種決標方式？", "option_a": "最低標", "option_b": "最有利標", "option_c": "異質最低標", "option_d": "完全不需決標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講決策樹為：同質採購原則採最低標。影印紙這類規格明確、性能易統一者，較接近同質採購。", "topic": "同質採購判斷", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某資訊系統採購，各廠商提出的架構、維護模式、資安設計與商業條款差異很大。依第10講，較可能屬於何者？", "option_a": "異質且差異大", "option_b": "完全同質", "option_c": "不得採購", "option_d": "只能用最低標且不審技術", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出異質是指技術、品質、功能、效益、特性或商業條款存在差異；差異大且規格難單一者，較適合最有利標。", "topic": "異質採購判斷", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某設備採購不是現貨，但差異項目少，機關可訂明確合格標準，合格後再比價格。依第10講，較適合何種方式？", "option_a": "異質最低標", "option_b": "完全抽籤", "option_c": "無條件最有利標", "option_d": "不審規格直接決標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出異質但差異小者，可採異質最低標；先審是否合格，合格者再比價，以最低標決標。", "topic": "異質最低標", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "某專業技術服務案，方案品質、履約團隊、方法論與成果效益差異顯著，難以用單一規格描述。依第10講，較適合何者？", "option_a": "最有利標", "option_b": "同質最低標", "option_c": "完全不用評選", "option_d": "直接最低價得標且不審品質", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出異質且差異大、規格難單一者，適合採最有利標，尤其專業、技術、資訊服務或重大複雜標的。", "topic": "最有利標適用", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某採購標的規格明確、現貨充足、各廠商產品無實質差異，機關卻只因想主觀挑廠商而採最有利標。依第10講，主要問題為何？", "option_a": "同質標的原則應採最低標，採最有利標須有具體必要性", "option_b": "同質標的一律不得公開招標", "option_c": "最有利標完全不需理由", "option_d": "現貨採購一定要用異質最低標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講心法是先判斷同/異質再選決標方式；同質採購原則最低標，最有利標須具體說明不採最低標之理由並核定。", "topic": "錯用最有利標", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "判斷同質或異質時，承辦人先問：規格是否明確可單一化？這符合第10講哪一項實務判斷？", "option_a": "規格明確性與可量化程度", "option_b": "廠商名稱是否好聽", "option_c": "投標書封面是否漂亮", "option_d": "承辦人是否熟識廠商", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講列出的實務判斷重點包含規格是否明確可單一化、市場供應型態與方案差異程度。", "topic": "規格是否單一化", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "某採購標的是大量現貨，性能容易統一；另一案是高度客製服務。依第10講，這是在比較哪一個判斷因素？", "option_a": "市場供應型態", "option_b": "押標金利息", "option_c": "招標文件發售費", "option_d": "政黨投標限制", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講實務判斷重點包括市場供應型態，例如現貨與客製的不同，會影響同質/異質判斷。", "topic": "市場供應型態", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某同質採購採最低標，但最低價明顯低到可能無法履約。依第10講，機關不應只看便宜，還應啟動何種控管？", "option_a": "標價偏低之說明、查核與履約風險控管", "option_b": "直接無條件決標", "option_c": "刪除最低價紀錄", "option_d": "改由承辦人私人付款", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出同質最低標仍須依第58條控管標價偏低，要求說明與查核，必要時不予決標。", "topic": "最低標低價風險", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "某案採異質最低標，工作小組卻直接替廠商評優劣、排名次。依第10講，主要問題為何？", "option_a": "異質最低標情境下，工作小組重在審合格與否，不評優劣", "option_b": "工作小組一定要決定得標廠商", "option_c": "異質最低標不得有審查標準", "option_d": "工作小組不得看資格與規格", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出工作小組提出資格/規格合致初審意見，異質最低標情境不評優劣。", "topic": "異質最低標審查", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "某異質最低標案未設明確合格標準，直接進入比價。依第10講，主要缺失為何？", "option_a": "異質最低標應先設明確審查標準，合格後再比價", "option_b": "異質最低標完全不用審查", "option_c": "異質最低標一定不得比價", "option_d": "合格標準只能由得標廠商決定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講整理異質最低標要點：設明確審查標準，先審合格與否，合格者再以最低標決標。", "topic": "審查標準", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某機關採最有利標，但簽呈只寫『想選好一點的廠商』，未具體說明不採最低標理由。依第10講，主要問題為何？", "option_a": "採最有利標須逐案具體說明不採最低標理由並核定", "option_b": "最有利標完全不用核定", "option_c": "只要想選好廠商就充分", "option_d": "最有利標不得說明理由", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出最有利標需逐案具體說明不採最低標之理由，提首長或上級機關核定。", "topic": "最有利標核定", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "某最有利標文件未列評選項目、配分、最低合格分數與價格/非價格權重。依第10講，缺少何者？", "option_a": "評選規則的明確揭示", "option_b": "押標金沒收事由", "option_c": "三家比價型錄", "option_d": "履約驗收日期", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講整理最有利標招標文件應明列評選項目與配分、最低合格分數、價格/非價格權重與評選方法。", "topic": "評選文件明確性", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "某最有利標評選委員會只有3人。依第10講常見組成，可能有何問題？", "option_a": "評選委員會常見為5至17人，3人可能不足", "option_b": "評選委員會固定只能3人", "option_c": "評選委員會不得超過2人", "option_d": "最有利標不需要委員會", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講整理評選或審查委員會常見組成為5至17人，並應注意外聘專家比例與迴避。", "topic": "評選委員會組成", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "某評選委員會全由同一單位內部人員組成，沒有注意外聘專家學者比例。依第10講，主要風險為何？", "option_a": "可能不符合評選委員會組成與外部監督要求", "option_b": "外聘專家永遠不得參與", "option_c": "委員會必須全由投標廠商組成", "option_d": "同一單位越集中越符合公正", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出評選委員會應注意外聘專家學者達法定比例，避免同單位過度集中。", "topic": "外聘專家", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "某評選委員與投標廠商有利害關係，仍親自評分。依第10講，最應注意何者？", "option_a": "利害關係者應迴避", "option_b": "利害關係者應優先評分", "option_c": "利害關係不需揭露", "option_d": "評選分數可事後刪除", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講評選委員會運作要求委員親自出席並簽名評分，且利害關係者應迴避。", "topic": "利益迴避", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "某評選委員未出席會議，卻事後請他人代簽評分表。依第10講，主要問題為何？", "option_a": "委員應親自出席並簽名評分", "option_b": "委員代簽是正常程序", "option_c": "評選會議不需簽名", "option_d": "未出席者才可評分", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出委員應親自出席且簽名評分，並應保留完整會議紀錄。", "topic": "委員出席", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "某廠商在簡報詢答時提出全新技術方案，機關將其納入評分。依第10講，主要問題為何？", "option_a": "簡報/詢答非協商，不得變更投標內容或納入事後補充", "option_b": "簡報時可任意更改投標內容", "option_c": "詢答可取代投標文件", "option_d": "最有利標不得有簡報", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講提醒簡報/詢答非屬協商，不得變更投標內容或納入事後補充。", "topic": "簡報詢答", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "工作小組初審意見只寫『看起來可以』，未標示文件頁次。依第10講，較完整作法為何？", "option_a": "就資格/規格合致提出初審意見，並標示文件頁次", "option_b": "工作小組不用提出任何意見", "option_c": "初審只看廠商人氣", "option_d": "文件頁次不得標示", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出工作小組任務是就資格/規格合致提出初審意見，並標示文件頁次。", "topic": "工作小組初審", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "開標後機關要求工作小組在幾分鐘內完成複雜技術文件初審。依第10講，主要風險為何？", "option_a": "未留足審查時間，可能影響初審意見品質", "option_b": "審查越快越一定合法", "option_c": "工作小組不得審查技術文件", "option_d": "初審品質與程序無關", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講提醒開標後應留足審查時間，以確保工作小組初審意見品質。", "topic": "初審時間", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "最低標價格低於合理成本甚多，廠商只說『我們就是便宜』，未提出成本、人力、材料佐證。依第10講，機關應如何看待？", "option_a": "說明可能不足，應以履約能力與品質為核心審查", "option_b": "只要便宜就必須決標", "option_c": "不得要求任何佐證", "option_d": "直接提高廠商價格", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講第58條處理標價偏低時，可要求廠商就成本、工法、人力、材料、維護等提出說明並佐證。", "topic": "標價偏低說明", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "廠商低價說明不足且履約風險高。依第10講，機關可考慮何者？", "option_a": "不決標、重招或調整需求/規格", "option_b": "一定照價決標", "option_c": "由廠商自行宣布得標", "option_d": "刪除低價審查紀錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出說明不足或風險高時，可不決標、重招或調整需求/規格。", "topic": "低價決策", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "某最有利標評選出優勝廠商後，機關未檢查報價是否合理即決標。依第10講，缺少何者？", "option_a": "決標前價格合理性審查", "option_b": "示疑期間1/4", "option_c": "押標金沒收", "option_d": "國內偏好權重", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講指出最有利標決標前應確認報價或協商結果合理，保存相關紀錄。", "topic": "價格合理性", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "某底價直接等於預算，未檢討市場行情、成本結構與效益需求。依第10講，主要問題為何？", "option_a": "底價設定應依市場行情、成本結構、預算與效益需求", "option_b": "底價必須永遠等於預算", "option_c": "底價不得參考市場行情", "option_d": "底價由廠商自行設定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講整理底價設定應依市場行情、成本結構、預算與效益需求，必要時分解工料、工時與維護成本。", "topic": "底價估算", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "某評選案沒有保存評分表、會議紀錄與不同意見。依第10講，主要缺失為何？", "option_a": "評選程序應留痕，保存評分表、會議紀錄與不同意見", "option_b": "評選不得留任何紀錄", "option_c": "只有價格標需要紀錄", "option_d": "會議紀錄只能口頭保存", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講要求評選會議逐項審查，決標核定時應保存評分表、會議紀錄與不同意見。", "topic": "程序留痕", "source": "Notion：政府採購法 / 第10講 / 再一次"}, {"id": "GPL10B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "某承辦人面對採購案時，第一步就想直接套最有利標。依第10講，較正確的第一步是什麼？", "option_a": "先判斷標的是同質或異質，再選決標方式", "option_b": "所有案件一律最有利標", "option_c": "所有案件一律最低標且不審風險", "option_d": "先看哪家廠商最熟", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第10講關鍵心法是先判斷同/異質，選對決標方式，嚴守評選程序、公正與留痕，並於決標前做價格合理性審查。", "topic": "決策總整理", "source": "Notion：政府採購法 / 第10講 / 再一次"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>

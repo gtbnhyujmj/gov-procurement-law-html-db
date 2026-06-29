@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第14講 Level 1｜25題互動測驗</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第14講 Level 1｜25題互動測驗</h1>
+    <div class="meta">本講主軸：第70條品質管理查核、臺中花博后里天空步道案例、三級品管、四大計畫、材料試驗、環保職安、科技管理與三如原則。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL14-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，本講主要聚焦政府採購法哪一條？", "option_a": "第70條品質管理查核", "option_b": "第14條分批採購", "option_c": "第52條決標方式", "option_d": "第98條社會義務", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講標題即為第70條「品質管理查核」濃縮筆記，聚焦工程採購之品質管理與查核。", "topic": "講次主軸", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，本講所用的工程案例為何？", "option_a": "2018臺中世界花博后里天空步道與花馬道新建工程", "option_b": "高鐵南港站工程", "option_c": "桃園機場第三航廈工程", "option_d": "臺北大巨蛋工程", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講以2018臺中世界花博「后里天空步道與花馬道新建工程」作為第70條實務載體。", "topic": "案例工程", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，政府採購法第70條主要規範何者？", "option_a": "工程採購之品質管理與查核", "option_b": "財物採購的公告金額", "option_c": "勞務採購的議價程序", "option_d": "廠商停權期間", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出法條焦點為政府採購法第70條，規範工程採購之品質管理與查核。", "topic": "第70條定位", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，三級品管架構中的第一級主要為何？", "option_a": "承包商施工品質管制", "option_b": "主管機關查核", "option_c": "法院審查", "option_d": "議會質詢", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講三級品管架構中，第一級是承包商施工品質管制，包括自主管理、材料管制、試驗與文件化。", "topic": "三級品管", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，三級品管架構中的第二級主要為何？", "option_a": "設計/監造與機關品質保證", "option_b": "承包商自主管理", "option_c": "主管機關或工程會查核", "option_d": "廠商行銷部門宣傳", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講三級品管第二級為設計、監造與機關品質保證，包括查驗點設計、抽驗、進度與品質協調。", "topic": "三級品管", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，三級品管架構中的第三級主要為何？", "option_a": "主管機關或工程會/市府查核", "option_b": "承包商自行填表", "option_c": "分包商私下驗收", "option_d": "居民自行打分數", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講三級品管第三級為主管機關或工程會、市府查核，包括內外部查核小組與專家委員進場查核。", "topic": "三級品管", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，開工前四大計畫不包括下列何者？", "option_a": "監造計畫、施工計畫、品質計畫、職業安全衛生計畫", "option_b": "員工旅遊計畫", "option_c": "施工計畫", "option_d": "品質計畫", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第14講指出開工前四大計畫為監造計畫、施工計畫、品質計畫、職業安全衛生計畫，均須完成並依計畫執行與查核。", "topic": "開工前四大計畫", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，第70條品質查核精神包含下列何者？", "option_a": "內外部機制併行、評分與缺失改善、PDCA循環、全程留痕", "option_b": "只靠口頭保證", "option_c": "不做文件紀錄", "option_d": "查核後不用改善", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講整理查核精神為內外部機制併行、評分與缺失改善、PDCA循環、全程留痕，包括文件、照片、試驗報告。", "topic": "查核精神", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "依第14講案例，后里天空步道與花馬道新建工程之業主/主辦機關為何？", "option_a": "臺中市政府建設局（新建工程處）", "option_b": "臺北市政府教育局", "option_c": "交通部高速公路局", "option_d": "經濟部水利署", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講案例概要指出，業主/主辦機關為臺中市政府建設局（新建工程處）。", "topic": "工程主辦機關", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，案例工程範圍不包括下列何者？", "option_a": "后里森林園區、花馬道、天空步道、擋土牆、機電照明、景觀優化", "option_b": "刑事偵查庭", "option_c": "天空步道", "option_d": "機電照明", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第14講案例工程範圍包括后里森林園區、花馬道、天空步道、擋土牆、機電照明、景觀優化等。", "topic": "工程範圍", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，工程配合花博時程欲達成的「三如原則」為何？", "option_a": "如期、如質、如度", "option_b": "如價、如量、如夢", "option_c": "如期、如訴、如判", "option_d": "如風、如火、如雷", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出目標時程配合2018臺中世界花博，達成「如期、如質、如度」。", "topic": "三如原則", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，品質缺失管理應如何處理？", "option_a": "編號、期限、責任到人、復查驗證、列管結案", "option_b": "只口頭說明即可", "option_c": "查核後立即刪除紀錄", "option_d": "不需設定期限", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出缺失管理包括編號、期限、責任到人、復查驗證、列管結案。", "topic": "缺失管理", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，案例工程的付款節點如何設計？", "option_a": "依進度分期請領：25%、50%、75%、100%", "option_b": "開工前一次全付", "option_c": "驗收前不得任何請領", "option_d": "由廠商自行決定比例", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講進度、變更與付款管理指出，付款節點依進度分期請領，包含25%、50%、75%、100%。", "topic": "進度管理", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，案例中的變更設計是為何而辦理預算與工期調整？", "option_a": "整體景觀照明優化", "option_b": "廠商私人要求", "option_c": "承辦人休假安排", "option_d": "取消所有照明", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出變更設計係為整體景觀照明優化，依程序辦理預算與工期調整。", "topic": "變更設計", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，鋼構鋼管品質管制包含下列何者？", "option_a": "鋼板/焊材來源控管、尺寸精度、製程紀錄、UT超音波檢測、焊接品質", "option_b": "只看外觀顏色", "option_c": "完全不需材料來源", "option_d": "不需焊工資格審查", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講材料與構件品質指出，鋼構鋼管製程品管包含鋼板/焊材來源控管、尺寸精度、製程紀錄；檢測包含UT超音波、焊接品質、焊工資格審查與抽考。", "topic": "鋼構品質", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，案例中鋼管柱灌注採何種混凝土，以確保外觀平整並減少蜂窩與噪音？", "option_a": "SCC自充填混凝土", "option_b": "普通泥土", "option_c": "瀝青混凝土", "option_d": "石膏", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出鋼管柱灌注採SCC自充填混凝土，確保外觀平整、減少蜂窩與噪音。", "topic": "混凝土品質", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，施工查驗面向包含何者？", "option_a": "品質、安全、美觀、生態、環境", "option_b": "只看價格", "option_c": "只看承包商名氣", "option_d": "只看媒體曝光", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講施工查驗與界面管理指出，全方位查驗面向包含品質、安全、美觀、生態、環境。", "topic": "施工查驗", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，查驗點/停等點的操作精神為何？", "option_a": "逐項檢查，合格後續行", "option_b": "直接跳過檢查", "option_c": "先施工完再補表", "option_d": "不合格也繼續施工", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出查驗點或停等點應逐項檢查，合格後續行。", "topic": "停等點", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，鐵路跨越吊裝屬高風險作業，應如何管理？", "option_a": "夜間作業專案計畫、砂盤推演、機具到位、臺鐵協調、居民告知與交通維持", "option_b": "臨時決定即可", "option_c": "不需跨機關協調", "option_d": "完全不用告知居民", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出鐵路跨越吊裝須夜間作業專案計畫、砂盤推演、機具到位、臺鐵協調、居民告知與交通維持。", "topic": "高風險作業", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，環境保護與綠色作為不包括下列何者？", "option_a": "空污降塵、樹木保育、LED照明、飛灰/爐石粉替代部分水泥、工廠預鑄/預製", "option_b": "完全不做環保措施", "option_c": "工區圍籬與灑水沖洗", "option_d": "保留既有樹木", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第14講環境保護與綠色/節能作為包括空污降塵、樹木保育、LED照明、混凝土以飛灰/爐石粉替代降低碳排，以及工廠預鑄/預製。", "topic": "環境保護", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，職安管理的制度化作法包含何者？", "option_a": "危害告知、許可作業制度、教育訓練、定期稽查、工前會議", "option_b": "只靠工人經驗", "option_c": "不做教育訓練", "option_d": "高空作業不設防護", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講安全衛生管理指出，制度化管理包含危害告知、許可作業制度、教育訓練、定期稽查與工前會議。", "topic": "職安管理", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，災害應變管理包含下列何者？", "option_a": "颱風/豪雨預警與應變、臨時支撐與復原計畫", "option_b": "完全不預警", "option_c": "只等事故發生後再說", "option_d": "不做任何支撐", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講安全衛生管理指出，災害應變包含颱風/豪雨預警與應變、臨時支撐與復原計畫。", "topic": "災害應變", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，BIM/4D在工程管理中可用於何者？", "option_a": "介面衝突檢核、施工模擬、與居民溝通視覺化", "option_b": "直接取代所有查核", "option_c": "只用來做廣告海報", "option_d": "完全不能用於施工模擬", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講科技與創新管理指出，BIM/4D可用於介面衝突檢核、施工模擬、與居民溝通視覺化。", "topic": "科技管理", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，無人機與遠端監造可用於何者？", "option_a": "航拍監測、日報即時上傳、進度與安全稽核", "option_b": "完全免除驗收", "option_c": "只作娛樂用途", "option_d": "不得用於進度監測", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出無人機/遠端監造可用於航拍監測、日報即時上傳、進度與安全稽核。", "topic": "遠端監造", "source": "Notion：政府採購法 / 第14講"}, {"id": "GPL14-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "依第14講，新鮮人實務重點清單的核心精神為何？", "option_a": "四大計畫齊備、三級品管權責明確、查驗點與自主檢查、PDCA缺失改善、進度付款連動", "option_b": "只看最低價格", "option_c": "不需留任何查核紀錄", "option_d": "工程品質完全交給廠商自行決定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講新鮮人清單強調開工前四大計畫、三級品管權責、材料與工法審查、查驗點與自主檢查、PDCA改善追蹤、科技工具與付款進度連動。", "topic": "新鮮人清單", "source": "Notion：政府採購法 / 第14講"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+render();
+</script>
+</body>
+</html>

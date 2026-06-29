@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第15講 Level 1｜25題互動測驗</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第15講 Level 1｜25題互動測驗</h1>
+    <div class="meta">本講主軸：財物採購、勞務採購、混合採購、分批/分別採購、金額級距、選擇性招標、限制性招標、後續擴充與同質/異質採購。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL15-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，本講開始主要將政府採購法套用到哪些採購類型？", "option_a": "財物採購與勞務採購", "option_b": "刑事訴訟與民事訴訟", "option_c": "家庭買賣與私人借貸", "option_d": "選舉罷免與公投", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講明示，前面多以工程採購為例，本講開始套用到財物採購與勞務採購。", "topic": "講次主軸", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，財物與勞務採購的基本法律流程大致為何？", "option_a": "預算、招標、決標、履約、驗收、保固", "option_b": "起訴、審判、上訴、執行", "option_c": "登記、結婚、離婚、繼承", "option_d": "提案、連署、投票、公告", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講指出，財物與勞務採購法律架構與工程採購幾乎相同：預算、招標、決標、履約、驗收、保固。", "topic": "採購流程", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，採購前缺失防範重點不包括下列何者？", "option_a": "可行性評估、採購策略規劃、資格條件設計、需求確認", "option_b": "承辦人私人喜好", "option_c": "採購策略規劃", "option_d": "需求確認", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第15講採購前防範重點包含可行性評估、採購策略規劃、資格條件設計與需求確認。", "topic": "採購前防範", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，低價搶標容易導致下列何種問題？", "option_a": "偷工減料、品質下降、履約困難", "option_b": "必然提高品質", "option_c": "完全沒有履約風險", "option_d": "一定讓廠商獲利增加", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講指出政府逐漸從最低標改往最有利標，原因是低價搶標容易導致偷工減料、品質下降、履約困難。", "topic": "最低標問題", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，下列何者常採最有利標而非最低標？", "option_a": "技術服務、資訊服務、專業服務", "option_b": "所有同質影印紙", "option_c": "所有小額採購", "option_d": "完全無品質差異的文具", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講指出技術服務、資訊服務、專業服務案件常採最有利標，而非最低標。", "topic": "最有利標", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，下列何者屬於財物採購的範圍？", "option_a": "買賣、租賃、訂製、不動產、動產、權利", "option_b": "刑事辯護", "option_c": "婚姻登記", "option_d": "選舉訴訟", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講列出財物包括買賣、租賃、訂製、不動產、動產與權利。", "topic": "財物採購定義", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，下列何者是財物採購例子？", "option_a": "文具、電腦、印表機、藥品、醫療器材、武器裝備", "option_b": "清潔服務", "option_c": "法律顧問服務", "option_d": "系統維護服務", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講財物採購例子包括辦公用品如文具、電腦、印表機，醫療設備如藥品、醫療器材，以及軍事設備。", "topic": "財物採購例子", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，下列何者屬於勞務採購？", "option_a": "顧問、法律、會計、維修、機電保養、系統維護、清潔、保全、教育訓練", "option_b": "購買印表機", "option_c": "購買藥品", "option_d": "購買文具", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講列出勞務包括專業服務、技術服務、資訊服務、勞力服務與教育訓練。", "topic": "勞務採購定義", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，系統維護與軟體開發屬於哪一類勞務？", "option_a": "資訊服務", "option_b": "財物買賣", "option_c": "不動產處分", "option_d": "軍事設備", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講勞務採購中，資訊服務包括系統維護與軟體開發。", "topic": "勞務類型", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，採購同時包含工程、財物與勞務時，應如何認定主要採購類型？", "option_a": "以金額占比最高者認定", "option_b": "一律認定為勞務", "option_c": "一律認定為財物", "option_d": "由廠商自行決定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講混合採購認定指出，同時包含工程、財物、勞務時，以金額占比最高者認定。", "topic": "混合採購", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某採購工程70%、設備20%、維護10%。依第15講，應認定為何種採購？", "option_a": "工程採購", "option_b": "財物採購", "option_c": "勞務採購", "option_d": "完全不適用採購法", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講舉例，工程70%、設備20%、維護10%，以金額占比最高者認定為工程採購。", "topic": "混合採購例子", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，下列何者屬不適用政府採購法、較適用財產管理法規的情形？", "option_a": "財產出租或變賣", "option_b": "購買電腦", "option_c": "委託清潔服務", "option_d": "系統維護", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講指出財產處分如出租、變賣，屬國有財產法或地方財產管理法範圍，不適用政府採購法。", "topic": "不適用採購法", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，將120萬元採購故意拆成60萬加60萬以規避採購法，屬於何者？", "option_a": "違法分批採購", "option_b": "合法分別採購", "option_c": "共同供應契約", "option_d": "開口契約", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講舉例，120萬拆成60萬加60萬以規避採購法，屬違法分批採購。", "topic": "分批採購", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，符合哪些情形時可分別採購？", "option_a": "不同標的、不同地點、不同需求", "option_b": "同一需求故意拆小", "option_c": "只為規避公告金額", "option_d": "把同一批設備拆開發票", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講指出，不同標的、不同地點、不同需求時，可以分別採購。", "topic": "分別採購", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，巨額財物採購的金額門檻為何？", "option_a": "1億元以上", "option_b": "2,000萬元以上", "option_c": "1,000萬元以上", "option_d": "100萬元以上", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講金額級距表列出，巨額財物採購為1億元以上。", "topic": "金額級距", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，巨額勞務採購的金額門檻為何？", "option_a": "2,000萬元以上", "option_b": "1億元以上", "option_c": "100萬元以上", "option_d": "10萬元以下", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講金額級距表列出，巨額勞務採購為2,000萬元以上。", "topic": "金額級距", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，勞務採購查核金額為何？", "option_a": "1,000萬元以上", "option_b": "100萬元以上", "option_c": "10萬元以下", "option_d": "1億元以上", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講金額級距表列出，查核金額（勞務）為1,000萬元以上。", "topic": "金額級距", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，公告金額為何？", "option_a": "100萬元以上", "option_b": "10萬元以下", "option_c": "1,000萬元以上", "option_d": "2,000萬元以上", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講金額級距表列出，公告金額為100萬元以上。", "topic": "金額級距", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，小額採購的金額為何？", "option_a": "10萬元以下", "option_b": "100萬元以上", "option_c": "1,000萬元以上", "option_d": "1億元以上", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講金額級距表列出，小額採購為10萬元以下。", "topic": "小額採購", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，選擇性招標常適用於何種採購？", "option_a": "長期採購、經常採購", "option_b": "一次性私人買賣", "option_c": "完全無需求確認的採購", "option_d": "刑事偵查採購", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講指出選擇性招標適用於長期採購、經常採購，例如便當、文具、印刷、清潔服務等。", "topic": "選擇性招標", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，選擇性招標建立合格廠商名單通常要求幾家以上？", "option_a": "6家以上", "option_b": "1家以上", "option_c": "2家以上", "option_d": "100家以上", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講指出選擇性招標建立6家以上合格廠商名單，之後再邀請投標。", "topic": "合格廠商名單", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，限制性招標的操作不包括下列何者？", "option_a": "比價2家以上或議價1家", "option_b": "完全不需法定事由即可指定廠商", "option_c": "獨家供應", "option_d": "緊急事故", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第15講整理限制性招標是不公開招標，直接比價2家以上或議價1家；適用如流標、獨家供應、緊急事故、後續擴充等情形。", "topic": "限制性招標", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，後續擴充成立的必要條件之一為何？", "option_a": "原契約或原招標文件已載明", "option_b": "事後才想到即可", "option_c": "只要廠商願意即可", "option_d": "不需相容性需求", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講指出後續擴充必須原契約已載明、原招標文件已載明，並有相容性需要與原廠供應必要。", "topic": "後續擴充", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，下列何者較屬同質採購，通常採最低標？", "option_a": "影印紙、水泥、鋼筋", "option_b": "軟體系統", "option_c": "顧問服務", "option_d": "設計服務", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講指出同質採購產品差異不大，例如影印紙、水泥、鋼筋，決標方式為最低標。", "topic": "同質採購", "source": "Notion：政府採購法 / 第15講"}, {"id": "GPL15-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "依第15講，異質最低標與最有利標的決標差異為何？", "option_a": "異質最低標為合格最低價，最有利標為綜合最佳", "option_b": "兩者完全相同", "option_c": "最有利標只看最低價", "option_d": "異質最低標完全不看價格", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第15講比較表指出，異質最低標決標為合格最低價；最有利標決標為綜合最佳。", "topic": "異質最低標與最有利標", "source": "Notion：政府採購法 / 第15講"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+render();
+</script>
+</body>
+</html>

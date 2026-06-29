@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第08講 Level 1｜再一次</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第08講 Level 1｜再一次 25題</h1>
+    <div class="meta">第二套：偏招標實務踩雷、同等品、等標期、押標金、底價保密、資格限制、PCM角色衝突。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL08B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某工程採購預算5,200萬元，承辦人仍以一般未達查核案件處理。依第08講，主要問題為何？", "option_a": "工程已達查核金額5,000萬元，應注意核報與審查強度", "option_b": "工程要達2億元才需要任何程序", "option_c": "只要未達巨額就完全不用管", "option_d": "工程採購不適用查核金額", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講整理查核金額口述為工程5,000萬元；達查核金額者程序與核報要求提高。", "topic": "門檻判斷", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某達查核金額以上公開招標案，首次公告只給7日等標期。依第08講口述規劃，主要風險為何？", "option_a": "達查核金額以上公開招標口述規劃為21日，7日可能不足", "option_b": "達查核金額以上只能給3日", "option_c": "等標期越短一定越合法", "option_d": "公開招標不用等標期", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講整理達查核金額以上公開招標首次招標期限為21日，仍應依實務規定與標案公告確認。", "topic": "首次招標期限", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某達公告金額以上案件取消後再公告，機關只給3日。依第08講，較適當判斷為何？", "option_a": "達公告金額以上再公告最短7日，3日偏向未達公告金額案件", "option_b": "達公告金額以上再公告最短1日", "option_c": "所有再公告都只能3日", "option_d": "再公告不得縮短", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講整理取消或暫停後再公告，未達公告金額最短3日，達公告金額以上最短7日。", "topic": "再公告期限", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "某選擇性招標建立合格廠商名單後，三年內每次採購都直接邀請，不重新預估金額。依第08講，問題為何？", "option_a": "每次採購仍須重新預估金額並依門檻辦理公告或核報", "option_b": "建立名單後永遠不用看金額", "option_c": "合格名單可永久不更新", "option_d": "選擇性招標不得建立名單", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講指出選擇性招標名單效期可逐年但不超過3年，且每次採購仍須重新預估金額與依門檻辦理公告或核報。", "topic": "選擇性招標名單", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某專業服務案評選後，機關要求廠商補正或重送5次。依第08講，主要問題為何？", "option_a": "必要時得補正或重送，但不得超過3次", "option_b": "補正次數完全沒有限制", "option_c": "專業服務不得評選", "option_d": "補正只能在驗收後辦理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講整理專業服務評選必要時得要求補正或重送，但不得超過3次。", "topic": "專業服務評選", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "某招標文件直接寫明只能用A品牌，沒有說明客觀上無法描述，也沒有允許同等品。依第08講，主要問題為何？", "option_a": "技術規格不得指向特定廠牌；例外時亦須允許同等品", "option_b": "指定品牌永遠合法", "option_c": "同等品只適用驗收後", "option_d": "技術規格不得寫功能與特性", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§26指出技術規格應聚焦功能與特性，不得指向特定廠牌、專利或來源；客觀上無法明確描述時須允許同等品。", "topic": "技術規格", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "某招標文件允許同等品，但未寫明提出方式與審查標準。依第08講，缺少何者？", "option_a": "應明訂同等品可提出與審查方式", "option_b": "同等品不得審查", "option_c": "同等品只看廠商名氣", "option_d": "同等品一定不得使用", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講整理同等品審查要點包含功能、效益、標準與價格等，應於招標文件明訂可提出與審查方式。", "topic": "同等品審查", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某公開招標案預算尚未核定，承辦人認為因此完全不能揭露任何金額。依第08講，較正確為何？", "option_a": "預算尚未核定者，得揭露預估金額", "option_b": "預算未核定時必須取消採購", "option_c": "預算未核定時只能私下通知熟識廠商", "option_d": "公開招標不得揭露預算或預估金額", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§27指出招標或資格審查公告須揭露預算金額；預算尚未核定者，得揭露預估金額。", "topic": "預算揭露", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "依第08講，公告日是指何日？", "option_a": "刊登於政府採購公報之日", "option_b": "承辦人開始寫簽呈之日", "option_c": "廠商第一次打電話之日", "option_d": "履約完成之日", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§28整理公告日為刊登於政府採購公報之日。", "topic": "公告日", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "某機關要求廠商購買招標文件後，才能算完成登記，否則不得投標。依第08講，主要問題為何？", "option_a": "不得以購買文件作為廠商登記之由", "option_b": "廠商一定要買紙本才可投標", "option_c": "網路領標一定違法", "option_d": "招標文件只能決標後提供", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§29提醒，不得以購買文件作為廠商登記之由，並建議以網路領標避免爭議。", "topic": "領標爭議", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某機關只在公告當天上午提供招標文件，之後到截止投標前都不再提供。依第08講，主要問題為何？", "option_a": "招標文件應自公告日起至截止收受投標前提供領取", "option_b": "招標文件只能公告當天提供", "option_c": "招標文件只能給得標廠商", "option_d": "招標文件不得提供廠商", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§29整理，公開招標文件或選擇性招標預審文件，應自公告日起至截止收受投標前提供領取。", "topic": "招標文件發售", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "某未達公告金額之採購，機關討論是否可免收押標金。依第08講示例，何者正確？", "option_a": "未達公告金額之採購屬得免收押標金示例之一", "option_b": "未達公告金額一定必須收最高押標金", "option_c": "只有巨額工程可免押標金", "option_d": "議價方式一定不得免押標金", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§30舉例得免收押標金情形包含勞務採購、未達公告金額之採購、以議價方式辦理之採購。", "topic": "押標金免收", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "某廠商得標後拒絕簽約，卻要求機關立即退還押標金。依第08講，較可能如何處理？", "option_a": "得標後拒絕簽約可能構成押標金沒收事由", "option_b": "拒簽約一定不得沒收押標金", "option_c": "押標金只能轉成文件費", "option_d": "押標金一定歸承辦人", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§31整理得標後不接受決標或拒絕簽約，得沒收押標金。", "topic": "押標金沒收", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "某廠商於報價有效期間內撤回報價。依第08講，可能產生何種效果？", "option_a": "可能構成押標金得沒收事由", "option_b": "一定獲得加分", "option_c": "機關必須重新公告72日", "option_d": "押標金必須轉為廠商獎金", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§31列出報價有效期間內撤回報價，可能為押標金得沒收情事。", "topic": "押標金沒收", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "同一廠商對同一採購案投了兩份不同標封。依第08講，主要違反何種原則？", "option_a": "同一廠商對同一採購限投一標", "option_b": "每家廠商至少投兩標", "option_c": "廠商不得使用密封信封", "option_d": "廠商只能口頭投標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§33整理同一廠商對同一採購限投一標；違反者開標前不予開標，開標後不予受理。", "topic": "一標一投", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "某廠商以透明信封送達投標文件。依第08講，較可能有何問題？", "option_a": "投標文件應密封並以不透明信封包妥", "option_b": "透明信封是唯一合法方式", "option_c": "投標文件不得用郵遞或專人", "option_d": "投標文件只能公開放在桌上", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§33整理投標可採郵遞、專人或電子資料傳輸，但應密封、不透明信封包妥。", "topic": "密封投標", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "開標前，承辦人把底價與已領標廠商名單告訴某廠商。依第08講，主要問題為何？", "option_a": "開標前不得洩漏底價、領標或投標廠商名單等影響競爭資訊", "option_b": "開標前應主動公開底價給部分廠商", "option_c": "領標名單永遠不是競爭資訊", "option_d": "底價只能給熟識廠商知道", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§34整理開標前不得洩漏底價、領標或投標廠商名單等影響競爭資訊。", "topic": "底價保密", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "某特殊採購涉及轉售、代工或機密性質。依第08講，決標後底價處理可能如何？", "option_a": "得不予公開", "option_b": "一定必須公開給全體民眾", "option_c": "一定要開標前公開", "option_d": "只能公開給得標廠商家屬", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§34整理一般情形決標後公開底價；涉及轉售、代工或屬於機密之特殊採購，得不予公開。", "topic": "底價公開例外", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "某廠商提出替代工法，可縮短工期且節省經費，但機關招標文件完全未規劃改善方案機制。依第08講，這與何概念相關？", "option_a": "改善方案或價值工程", "option_b": "押標金沒收", "option_c": "政黨投標限制", "option_d": "採購公報公告日", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§35整理改善方案或價值工程，得允許廠商提出可縮短工期、節省經費或提高效率之替代方案。", "topic": "改善方案", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "某顧問公司協助機關代擬招標文件後，又以廠商身分參與同一採購投標。依第08講，主要問題為何？", "option_a": "代擬招標文件者不得參與同一採購之投標或分包", "option_b": "代擬文件者一定最適合得標", "option_c": "只要價格最低即可", "option_d": "代擬文件與投標完全無關", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§36整理提供規劃、設計、審標服務或代擬招標文件者，不得參與同一採購之投標或分包。", "topic": "代擬文件後投標", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "某廠商曾協助機關審標，之後又想分包同一採購。依第08講，何者正確？", "option_a": "提供審標服務者不得參與同一採購之投標或分包", "option_b": "審標服務者可優先分包", "option_c": "只要未得標就可分包", "option_d": "審標服務者不受任何限制", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§36將提供審標服務者列為不得參與同一採購投標或分包之對象。", "topic": "審標服務利益衝突", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "某簡單採購要求廠商具有遠高於履約必要的財務能力，且不接受等值替代。依第08講，主要問題為何？", "option_a": "資格限制可能不當限制競爭，財務能力證明可有等值替代方式", "option_b": "資格越高越一定合法", "option_c": "不得訂任何資格", "option_d": "只要主管喜歡即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§37整理投標廠商資格不得不當限制競爭；財務能力等資格證明得以保證保險等等值方式替代。", "topic": "資格限制", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "某政黨及其關係企業欲參加政府採購投標。依第08講，應注意何者？", "option_a": "政黨及與之有關係企業不得參加投標", "option_b": "政黨可優先得標", "option_c": "政黨企業不受採購法限制", "option_d": "只要採限制性招標即可參加", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§38整理政黨及與之有關係企業不得參加投標，以維護競爭與中立性。", "topic": "政黨限制", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "某PCM廠商負責人同時也是同案施工廠商負責人。依第08講，主要問題為何？", "option_a": "PCM廠商負責人或合夥人不得同時為規劃設計、施工或供應商", "option_b": "PCM負責人必須同時施工", "option_c": "PCM角色衝突只影響驗收後保固", "option_d": "PCM不需避免關係企業", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§39整理PCM廠商之負責人或合夥人不得同時為規劃設計、施工或供應商，並不得為其關係企業。", "topic": "PCM角色衝突", "source": "Notion：政府採購法 / 第08講 / 再一次"}, {"id": "GPL08B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "某機關缺乏專業能力，欲委由具專業能力機關代辦採購。依第08講，何者正確？", "option_a": "得委由具專業能力之機關代表代辦，招標文件得載明由代辦機關為招標機關", "option_b": "機關絕對不得委託代辦", "option_c": "只能委託私人廠商作為招標機關", "option_d": "代辦機關不得行使任何必要職權", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第08講§40整理得委由具專業能力之機關代表代辦採購，招標文件得載明由代辦機關為招標機關，並得授權行使必要職權。", "topic": "專業機關代辦", "source": "Notion：政府採購法 / 第08講 / 再一次"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>

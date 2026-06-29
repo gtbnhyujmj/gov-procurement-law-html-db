@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第14講 Level 1｜再一次</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第14講 Level 1｜再一次 25題</h1>
+    <div class="meta">第二套：偏第70條工程品管現場踩雷，包含四大計畫、三級品管、缺失列管、材料試驗、停等點、跨鐵路吊裝、環保職安、BIM與社會溝通。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL14B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某工程案只把品質管理寫成『廠商自行注意』，沒有契約化品質、環保與施工安全責任。依第14講，主要問題為何？", "option_a": "第70條精神是把品質管理與查核具體落實為工程採購的契約義務", "option_b": "品質管理只需口頭提醒", "option_c": "工程採購不需要查核", "option_d": "只要價格最低即可免品質管理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講聚焦政府採購法第70條，強調工程採購之品質管理與查核，需透過計畫、查核、紀錄與改善落實。", "topic": "第70條適用", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某工程已開工，但監造計畫與職業安全衛生計畫尚未完成。依第14講，主要缺失為何？", "option_a": "開工前四大計畫應齊備且具可執行性", "option_b": "四大計畫可等完工後補", "option_c": "只有施工計畫重要，其他不用", "option_d": "職安計畫只適用勞務採購", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講列出開工前四大計畫：監造計畫、施工計畫、品質計畫、職業安全衛生計畫，均須完成並依計畫執行與查核。", "topic": "四大計畫", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某機關認為只要承包商有自主管理，監造與機關就不用查驗。依第14講，主要錯誤為何？", "option_a": "三級品管中二級品質保證仍由設計/監造與機關負責", "option_b": "三級品管只有承包商一級", "option_c": "監造不得參與品質管理", "option_d": "主管機關不得查核", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講三級品管中，一級是承包商施工品質管制，二級是設計/監造與機關品質保證，三級是主管機關或工程會/市府查核。", "topic": "三級品管權責", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "承包商未建立材料進出場控管、自主檢查表與停等點管理。依第14講，這主要是缺少哪一級品管？", "option_a": "一級承包商施工品質管制", "option_b": "二級主管機關查核", "option_c": "三級法院審查", "option_d": "四級居民投票", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出一級承包商應建置施工品質管制系統、材料進出場控管、自主檢查表、停等點管理、文件化與追蹤。", "topic": "一級品管", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某重大公共工程完全沒有市府查核小組或外聘委員進場查核。依第14講，缺少何種機制？", "option_a": "三級主管機關或工程會/市府查核", "option_b": "一級承包商自主管理", "option_c": "材料送審", "option_d": "居民說明會", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講第70條落實要點中，三級為市府/工程會查核，由市府查核小組與外聘委員實施查核，內外部機制併行。", "topic": "三級查核", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "外部品質查核指出缺失後，承包商只口頭說會改善，沒有編號、期限與復查。依第14講，較正確作法為何？", "option_a": "缺失應編號、期限、責任到人、復查驗證、列管結案", "option_b": "缺失只要口頭答應即可", "option_c": "查核缺失不得列管", "option_d": "缺失可等工程結案後再處理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講缺失管理要求編號、期限、責任到人、復查驗證、列管結案，並配合PDCA持續改善。", "topic": "缺失列管", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "某工程品質查核只有現場口頭討論，沒有照片、試驗報告或會議紀錄。依第14講，主要問題為何？", "option_a": "品質查核應全程留痕，包含文件、照片與試驗報告", "option_b": "品質查核不得留紀錄", "option_c": "只有完工照片即可", "option_d": "試驗報告一定不重要", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講查核精神包含內外部機制併行、評分與缺失改善、PDCA循環、全程留痕，包括文件、照片、試驗報告。", "topic": "全程留痕", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某工程為景觀照明優化而追加預算與延長工期，但未提出理由、經費/工期評估與核定文件。依第14講，主要缺失為何？", "option_a": "設計變更應依法程序，提出理由、經費/工期評估、核定文件與追蹤", "option_b": "設計變更完全不需文件", "option_c": "景觀照明不得變更", "option_d": "工期延長只需廠商同意", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講新鮮人清單提醒，設計變更依法程序，須提出理由、經費/工期評估、核定文件與追蹤。", "topic": "變更設計", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "某工程不審查進度與品質，只按廠商請款全額支付。依第14講，較正確方向為何？", "option_a": "付款應與進度連動，經承包提報、監造審查、機關核付", "option_b": "開工前一次全額付款", "option_c": "付款不用看品質", "option_d": "付款比例由廠商自由決定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講案例付款節點依進度分期請領，承包提報、監造審查、機關核付，並強調付款與進度連動。", "topic": "付款與進度", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "鋼構工程未控管鋼板與焊材來源，也無製程紀錄。依第14講，主要缺少何者？", "option_a": "鋼構鋼管製程品管與材料來源控管", "option_b": "社區關懷活動", "option_c": "綠色採購標章", "option_d": "居民視覺化溝通", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講鋼構鋼管品管包含鋼板/焊材來源控管、尺寸精度與製程紀錄。", "topic": "鋼構材料來源", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "鋼構焊接完成後未做UT超音波檢測，也未審查焊工資格。依第14講，主要問題為何？", "option_a": "焊接品質應納入非破壞檢測與焊工資格審查", "option_b": "焊接品質只看外觀油漆", "option_c": "焊工資格不得審查", "option_d": "UT檢測只適用資訊服務", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講材料品質指出，鋼構檢測包含非破壞檢測（UT超音波）、焊接品質、電焊工資格審查與抽考。", "topic": "焊接檢測", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "混凝土施工未做坍度/流度、耐久性試驗。依第14講，主要問題為何？", "option_a": "混凝土配比與試驗應包含坍度/流度與耐久性試驗", "option_b": "混凝土不需要任何試驗", "option_c": "只要顏色正常即可", "option_d": "耐久性試驗只適用文具採購", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講混凝土品質管制包含配比與試驗，如坍度/流度、耐久性試驗。", "topic": "混凝土試驗", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "鋼管柱灌注若要提升外觀平整並減少蜂窩與噪音，第14講案例採用何種工法材料？", "option_a": "SCC自充填混凝土", "option_b": "普通砂土", "option_c": "木屑填充", "option_d": "不做灌注", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出鋼管柱灌注採SCC自充填混凝土，以確保外觀平整、減少蜂窩與噪音。", "topic": "SCC自充填混凝土", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "某工項設定停等點，但現場未經檢查合格即繼續施作。依第14講，主要問題為何？", "option_a": "停等點應逐項檢查，合格後續行", "option_b": "停等點可自由跳過", "option_c": "停等點只需完工後補簽", "option_d": "停等點不需要紀錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講施工查驗與界面管理指出，查驗點/停等點應逐項檢查，合格後續行。", "topic": "停等點跳過", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "跨鐵路夜間吊裝未做砂盤推演、臺鐵協調與交通維持計畫。依第14講，主要缺失為何？", "option_a": "高風險作業應專案化管理並強化跨機關協調", "option_b": "跨鐵路吊裝不需計畫", "option_c": "夜間作業可不告知居民", "option_d": "交通維持只在完工後做", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出鐵路跨越吊裝須夜間作業專案計畫、砂盤推演、機具到位、臺鐵協調、居民告知與交通維持。", "topic": "跨鐵路吊裝", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "某工程未編列環境污染防治費，也沒有環境改善通知單與扣點機制。依第14講，主要問題為何？", "option_a": "環保規範與扣點機制應納入預算與契約，並落實稽核", "option_b": "環保費用一律不得編列", "option_c": "環境改善只靠承包商自願", "option_d": "施工環境與第70條完全無關", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講案例編列環境污染防治費，設計環保規範與扣點機制，落實環境改善通知單；新鮮人清單亦要求環保/綠色採購項目納入預算與契約扣點條款。", "topic": "環境污染防治", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "工區裸露施工造成揚塵，未設圍籬、灑水或沖洗。依第14講，應補強何種作為？", "option_a": "工區圍籬、灑水/沖洗、動線控管以降低PM2.5影響", "option_b": "完全不需處理揚塵", "option_c": "只需貼公告", "option_d": "只等下雨", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講空污降塵措施包括工區圍籬、灑水/沖洗、動線控管，以降低PM2.5影響。", "topic": "空污降塵", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "工程設計遇既有樹木，直接移除且未評估繞樹或生態措施。依第14講案例，較佳方向為何？", "option_a": "保留既有樹木，採結構開孔繞樹、橋面草溝與原生種植栽", "option_b": "所有樹木一律移除", "option_c": "生態保育與工程無關", "option_d": "只在完工後補照片", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講樹木保育/生態作為包括保留既有樹木、結構開孔繞樹、橋面草溝、配置原生種植栽。", "topic": "樹木保育", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "工程照明與材料未考慮節能減碳。依第14講案例，下列何者是可採作法？", "option_a": "LED照明、飛灰/爐石粉替代部分水泥、工廠預鑄/預製", "option_b": "只提高耗能", "option_c": "不做任何材料替代", "option_d": "全部現地施工增加擾動", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講節能減碳作為包括LED照明、混凝土採飛灰/爐石粉替代降低水泥用量與碳排、工廠預鑄/預製縮短工期與降低現地擾動。", "topic": "節能減碳", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "高空作業現場沒有危害告知、許可作業制度、教育訓練與工前會議。依第14講，主要缺少何者？", "option_a": "制度化職安管理", "option_b": "BIM建模", "option_c": "變更設計核定", "option_d": "付款分期請領", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講安全衛生管理強調危害告知、許可作業制度、教育訓練、定期稽查與工前會議。", "topic": "職安制度", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "颱風季施工卻沒有豪雨預警、臨時支撐與復原計畫。依第14講，主要缺失為何？", "option_a": "災害應變應包含颱風/豪雨預警、臨時支撐與復原計畫", "option_b": "災害應變可等災後再想", "option_c": "颱風與工程管理無關", "option_d": "只要施工快就好", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講安全衛生管理指出，災害應變包含颱風/豪雨預警與應變、臨時支撐與復原計畫。", "topic": "災害應變", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "某工程跨景觀、結構、機電多界面，但未做介面衝突檢核或施工模擬。依第14講，可善用何種工具？", "option_a": "BIM/4D", "option_b": "紙本抽籤", "option_c": "口頭猜測", "option_d": "完工後再回想", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講科技與創新管理指出，BIM/4D可用於介面衝突檢核、施工模擬與居民溝通視覺化。", "topic": "BIM/4D", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "某長距離步道工程進度與安全稽核不易掌握。依第14講，可用何種科技工具提升透明度？", "option_a": "無人機航拍監測與遠端監造", "option_b": "只靠月末口頭報告", "option_c": "完全不做日報", "option_d": "關閉所有監測", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講指出無人機/遠端監造可用於航拍監測、日報即時上傳、進度與安全稽核。", "topic": "無人機遠端監造", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "夜間施工前未通知居民，也未規劃交通人流分流，引發抗議。依第14講，較佳作法為何？", "option_a": "辦理說明會、夜間施工提前告知、交通人流分流與敦親睦鄰", "option_b": "完全不溝通", "option_c": "只在完工後道歉", "option_d": "禁止居民知道工程資訊", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講社會溝通與敦親睦鄰包含居民/里長說明會、夜間施工提前告知、交通人流分流與社區關懷活動。", "topic": "社會溝通", "source": "Notion：政府採購法 / 第14講 / 再一次"}, {"id": "GPL14B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "第14講案例曾獲外部品質查核甲等，並以金質獎為標竿。這主要體現何者？", "option_a": "第70條品質管理查核成效與持續精進精神", "option_b": "完全不用查核也能得獎", "option_c": "只看工程價格", "option_d": "只要工期延長即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第14講補充指出本案曾獲外部品質查核甲等評價，並以公共工程金質獎等為標竿持續精進，體現第70條品質管理成效。", "topic": "品質標竿", "source": "Notion：政府採購法 / 第14講 / 再一次"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+render();
+</script>
+</body>
+</html>

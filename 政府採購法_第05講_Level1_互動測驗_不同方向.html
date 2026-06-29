@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第05講 Level 1｜不同方向</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第05講 Level 1｜不同方向 25題</h1>
+    <div class="meta">這版偏情境判斷：離職後接觸、請託留痕、GPA例外、選擇性招標名單管理、限制性招標佐證、統包與共同投標風險。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL05B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某採購承辦人離職後第2年，受廠商委託回原服務機關接觸同類採購案。依第05講，主要問題為何？", "option_a": "可能違反離職後3年內不得就原服務機關採購接觸或處理之限制", "option_b": "離職後第2年已完全不受限制", "option_c": "只要廠商付費就可自由接觸", "option_d": "只要改用電話聯絡就不算接觸", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理，承辦或兼辦採購人員離職後3年內，不得為本人或代理廠商，就其原服務機關之採購接觸或處理。", "topic": "離職後限制", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某評選委員發現投標廠商負責人是其配偶。依第05講，較適當處理為何？", "option_a": "主動揭露並迴避", "option_b": "繼續評選但不告知任何人", "option_c": "要求該廠商先得標再補文件", "option_d": "只要分數給低一點即可不迴避", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理，涉及本人、配偶或三親等內親屬之採購事務，應主動迴避。", "topic": "利益迴避", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某機關開評選會前，主持人未詢問與會人員是否有利害關係。依第05講，較完整的內控作法為何？", "option_a": "開標或評選前由主持人宣示並請與會人員揭露利害關係", "option_b": "等廠商抗議後才處理即可", "option_c": "由主持人自行猜測誰有關係", "option_d": "禁止所有人揭露利害關係", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講提醒機關應建立利益衝突申報與迴避流程，開標或評選前由主持人宣示並請與會人員揭露。", "topic": "利益衝突內控", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "某採購案決標後才發現承辦人未迴避與親屬相關之採購事務。依第05講，主要風險為何？", "option_a": "產生公平性與爭議風險，應啟動調查與必要補救", "option_b": "既然已決標就一定完全沒問題", "option_c": "可以刪除相關紀錄避免爭議", "option_d": "只需要求廠商私下道歉", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講指出若事後發現未迴避且已決標，將產生公平性與爭議風險，應啟動調查與必要補救處理。", "topic": "未迴避後果", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某議員電話要求機關把招標規格改成特定品牌。依第05講，機關應如何處理較妥？", "option_a": "作成書面、文字或錄音等紀錄並留存備查", "option_b": "不留紀錄，直接照辦", "option_c": "只在私人手機刪除通話紀錄", "option_d": "等決標後再假裝沒發生", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理，對採購案件的請託關說，需以書面、文字或錄音等方式作成紀錄，留存備查；指定品牌屬應注意事項。", "topic": "請託關說", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "廠商於驗收後要求機關更改驗收結果。依第05講，這類聯絡是否仍需記錄？", "option_a": "需要，驗收期間與驗收後之請託關說也須記錄", "option_b": "不需要，只有招標前才要記錄", "option_c": "不需要，只有開標當天才要記錄", "option_d": "不需要，只要是驗收後都自由處理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講列出請託關說涵蓋招標前、招標後、契約履行或驗收期間與驗收後，均須記錄。", "topic": "請託關說時點", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "某機關採購案有大量口頭、傳真、電子郵件指示。依第05講，較佳制度設計為何？", "option_a": "建立標準化聯絡或請託登錄表，將指示與聯絡形成紀錄", "option_b": "只記得大概內容即可", "option_c": "一律不收電子郵件", "option_d": "只記錄對機關有利的部分", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講建議建立標準化聯絡或請託登錄表與錄音機制，口頭、傳真、電子方式之指示或聯絡一律形成紀錄。", "topic": "聯絡登錄", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某外國廠商參與我國政府採購，機關文件卻完全未考量我國國際承諾。依第05講，主要問題為何？", "option_a": "涉及國際承諾案件，文件與程序須符合承諾範圍與門檻", "option_b": "外國廠商永遠不得參與政府採購", "option_c": "外國廠商參與時完全不必看條約協定", "option_d": "只要廠商國籍不同就可任意排除", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理外國廠商參與政府採購，應依我國參與之條約與協定辦理，例如WTO GPA；涉及國際承諾者須符合承諾範圍與門檻。", "topic": "外國廠商", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "某軍購案涉及國安與機密，機關欲採特殊例外處理。依第05講，何者最重要？", "option_a": "須有充分法律依據與書面理由", "option_b": "只要主管口頭同意即可", "option_c": "可以完全不留任何資料", "option_d": "由廠商自行決定例外範圍", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講提醒軍購等特殊類型如涉及國安或機密，得依法定例外處理，但須有充分法律依據與書面理由。", "topic": "國安例外", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "某公告金額以上採購，承辦人因方便直接採限制性招標，未說明法條依據。依第05講，主要缺失為何？", "option_a": "方法選擇須有法條依據與書面理由", "option_b": "限制性招標永遠不需理由", "option_c": "公告金額以上不得採公開招標", "option_d": "只要方便就可不公告", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講提醒招標方法選擇須有法條依據與書面理由；公告金額以上原則公開招標，改採選擇性或限制性須符合要件。", "topic": "招標方式選擇", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某採購已達公告金額，機關未說明特殊事由即不公開招標。依第05講，最直接違反何種原則？", "option_a": "達公告金額以上之採購，原則應採公開招標", "option_b": "達公告金額以上原則應議價", "option_c": "達公告金額以上一律不用公告", "option_d": "公告金額以上只能共同投標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理§19，達公告金額以上之採購，原則應採公開招標。", "topic": "公告金額以上原則", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "某案投標文件內容複雜、審查需長時間，廠商資格涉及技術與財務能力。依第05講，較可能考慮何種招標？", "option_a": "選擇性招標", "option_b": "完全免招標", "option_c": "議價一定不需理由", "option_d": "只用私人推薦名單", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理§20，投標文件審查需長時間或內容複雜、廠商資格條件複雜等，屬選擇性招標典型事由。", "topic": "選擇性招標事由", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "某機關以選擇性招標為名，實際上只想排除不熟的廠商，且未記載明確事由。依第05講，主要風險為何？", "option_a": "選擇性招標可能被濫用為規避競爭之工具", "option_b": "選擇性招標本來就是排除競爭", "option_c": "只要建立名單就不用公平", "option_d": "完全沒有紀錄要求", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講提醒選擇性招標事由須明確記載於招標核准與文件，避免成為規避競爭之工具。", "topic": "選擇性招標濫用", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "某選擇性招標合格廠商名單已超過一年未公告資格審查，也未內部檢討。依第05講，問題為何？", "option_a": "名單有效期間與更新管理不足，應逐年公告或至少年度檢討修正", "option_b": "名單建立後永久有效", "option_c": "越久不更新越公平", "option_d": "只要曾合格就永遠不得檢討", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理，合格廠商名單超過一年者通常應逐年公告辦理資格審查；未再公告者亦應每年內部檢討、修正名單。", "topic": "合格廠商名單", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "某廠商列入合格名單後出現重大違約紀錄，但機關未複查。依第05講，應注意何者？", "option_a": "應建立對財務狀況、負責人變更、重大違約紀錄等年度複查機制", "option_b": "重大違約紀錄不得納入任何考量", "option_c": "合格名單不得更新", "option_d": "只要廠商曾合格就不會再出問題", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講實務要點提醒，應對財務狀況、負責人變更、重大違約紀錄等建立年度複查機制。", "topic": "合格廠商年度複查", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "某選擇性招標名單中有8家合格廠商，但機關每次只邀同一家。依第05講，主要問題為何？", "option_a": "合格者應有平等受邀機會，邀請方式應確保公平性與一致性", "option_b": "合格名單只需裝飾用", "option_c": "只邀同一家最符合公平", "option_d": "選擇性招標不得邀請合格廠商", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理合格者享有平等受邀機會，可採個別邀請或公告邀請，但應確保公平性與一致性。", "topic": "平等受邀", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "某公開招標無合格標，機關欲改採限制性招標。依第05講，下列何者是重要前提？", "option_a": "未重大改變原條件，並具體對應法定事由", "option_b": "可以任意改變所有條件", "option_c": "不需保留任何招標紀錄", "option_d": "只要承辦人覺得麻煩即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理限制性招標事由包含公開或選擇性招標無廠商投標或無合格標，且未重大改變原條件。", "topic": "限制性招標無合格標", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "某機關以『獨家供應』為由採限制性招標，但沒有唯一代理證明或市場調查。依第05講，主要缺失為何？", "option_a": "缺少專屬或獨家之證明與市場調查佐證", "option_b": "獨家供應永遠不需證明", "option_c": "只要廠商自稱獨家即可", "option_d": "市場調查只適用公開招標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講核查清單提醒，專屬或獨家應檢附智慧財產權、唯一代理證明與市場調查佐證。", "topic": "限制性招標獨家", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "災害搶修時間急迫，公開程序不及處理。依第05講，如採限制性招標，應特別留存何者？", "option_a": "災損鑑定、時效風險評估與縮短程序必要性說明", "option_b": "廠商私人推薦函即可", "option_c": "完全不需文件", "option_d": "只需一句『很急』", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講限制性招標實務要點提醒，緊急情形應留存災損鑑定、時效風險評估、縮短程序之必要性說明。", "topic": "限制性招標緊急", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "某機關以後續擴充為由採限制性招標，但無法證明技術相容性、經濟效益或原契約範圍關聯。依第05講，主要問題為何？", "option_a": "追加或擴充應證明技術相容性、經濟效益、比率控制與原契約範圍關聯", "option_b": "任何追加都可無條件限制性招標", "option_c": "追加擴充不用考慮原契約", "option_d": "只要預算還有錢即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講核查清單指出，追加或擴充須證明技術相容性、經濟效益、比率控制與原契約範圍關聯。", "topic": "追加擴充", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "某限制性招標議價過程沒有紀錄，也沒有價格合理性分析。依第05講，缺少何者？", "option_a": "比較或議價過程全程紀錄、議價決行簽核與價格合理性分析", "option_b": "廠商餐敘照片", "option_c": "承辦人私人心得", "option_d": "完全不需任何紀錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講提醒比較或議價過程應全程紀錄，議價決行簽核與價格合理性分析必要。", "topic": "比較與議價紀錄", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "某大型設備案涉及供應、安裝與後續維運，界面複雜。依第05講，何者較可能是合適的採購設計？", "option_a": "可考慮統包，整合供應、安裝或指定期間維運", "option_b": "統包只適用私人購物", "option_c": "統包不得明定性能驗收標準", "option_d": "統包代表不用履約管理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理統包可將設計與施工，或供應與安裝、指定期間維運整合辦理，適合大型、整合度高、界面複雜案件。", "topic": "統包適用", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "某統包案招標文件未明定介面責任、履約管理、性能或功能驗收標準。依第05講，主要風險為何？", "option_a": "統包履約與驗收責任不清，容易產生爭議", "option_b": "統包文件越空越好", "option_c": "統包不需要任何驗收標準", "option_d": "只要廠商自行判斷即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講提醒統包招標文件應明訂介面責任、履約管理、性能或功能驗收標準。", "topic": "統包招標文件", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "兩家廠商共同投標，但未檢附共同投標協議書，也未明定主協商廠商、分工與連帶責任。依第05講，缺少何者？", "option_a": "共同投標協議書及分工、權利義務與連帶責任安排", "option_b": "共同聚餐發票", "option_c": "各自私人履歷", "option_d": "完全不需文件", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講整理共同投標應檢附共同投標協議書，明定主協商廠商、分工、權利義務與連帶責任。", "topic": "共同投標文件", "source": "Notion：政府採購法 / 第05講 / 不同方向"}, {"id": "GPL05B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "某案允許共同投標，但實際上只是讓原本可互相競爭的廠商抱團排除其他競爭者。依第05講，機關應注意何者？", "option_a": "防止共同投標變相限制競爭，資格與能力相互補強須有正當性", "option_b": "共同投標一定越少競爭越好", "option_c": "共同投標完全不用審查正當性", "option_d": "只要廠商願意聯合就必須接受", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第05講提醒應防止以共同投標變相限制競爭，資格與能力相互補強需有正當性。", "topic": "共同投標限制競爭", "source": "Notion：政府採購法 / 第05講 / 不同方向"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>

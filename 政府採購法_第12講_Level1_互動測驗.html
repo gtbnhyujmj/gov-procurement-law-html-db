@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第12講 Level 1｜25題互動測驗</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第12講 Level 1｜25題互動測驗</h1>
+    <div class="meta">本講主軸：共同供應契約、綠色採購、額外項、免用共同供應、議價、契約變更、緊急採購、開口契約與後續擴充。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL12-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，本講主要聚焦何種採購制度與實務案例？", "option_a": "共同供應契約、議價、開口契約、後續擴充等", "option_b": "刑事羈押原因", "option_c": "民事訴訟證據調查", "option_d": "勞工退休金計算", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講主題聚焦共同供應契約的運作與限制，以及議價、開口契約、後續擴充等實務案例。", "topic": "講次主軸", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，共同供應契約（CPC）主要是針對何種需求所設計？", "option_a": "多機關共通需求之財物或勞務", "option_b": "單一私人消費者之日常購物", "option_c": "刑事案件證物保管", "option_d": "員工私人旅遊", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講說明共同供應契約針對多機關共通需求之財物或勞務，由訂約機關與廠商簽共同契約，其他機關得利用。", "topic": "共同供應契約定義", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，機關得委託其他機關代辦採購之法源方向為何？", "option_a": "採購法第40條", "option_b": "採購法第14條", "option_c": "採購法第58條", "option_d": "採購法第98條", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講整理，機關得委託其他機關代辦採購，例如委託臺灣銀行採購部，法源方向為採購法第40條。", "topic": "代辦採購", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，具環保標章之商品原則上應如何處理？", "option_a": "優先採購；不採用需具理由並經核定", "option_b": "一律禁止採購", "option_c": "只能私下購買", "option_d": "不需任何理由即可跳過", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講指出綠色採購中，具環保標章之商品原則上優先採購；不採用需具理由並經核定。", "topic": "綠色採購", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，採購網功能不包括下列何者？", "option_a": "商品查詢、需求調查、訂單管理、電子支付、歷史訂單與滿意度調查", "option_b": "私人交友配對", "option_c": "共同供應契約商品查詢", "option_d": "請購與訂單管理", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第12講整理採購網具有商品查詢、需求調查、請購/訂單管理、電子支付、歷史訂單與滿意度調查等功能。", "topic": "採購網功能", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，共同供應契約通常會載明下列何者？", "option_a": "採購案號、契約起迄、廠牌型號、價目與服務條件", "option_b": "承辦人私人薪資", "option_c": "廠商家庭成員資料", "option_d": "員工旅遊名單", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講指出共同供應契約會載明採購案號、契約起迄、廠牌型號、價目與服務條件，供查核與比較。", "topic": "共同供應契約內容", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，10萬元以上共同供應契約交貨地點應先注意何者？", "option_a": "先行測試，必要時通知使用單位或事務單位辦理正式驗收", "option_b": "完全免驗收", "option_c": "先開發票再測試", "option_d": "由廠商自行宣布合格", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講提示，10萬元以上交貨地點應先行測試，必要時通知使用單位/事務單位正式驗收，合格後始得開立發票。", "topic": "共同供應驗收", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，額外項或附加採購與主項之間應具備何種關係？", "option_a": "須與主項有直接關聯", "option_b": "可與主項完全無關", "option_c": "只能是私人禮品", "option_d": "不得有任何金額限制", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講指出額外項或附加採購是主項採購附帶增購之項目，須與主項有直接關聯。", "topic": "額外項", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，附加採購金額之限制，講次以何者為例？", "option_a": "不逾主項金額之十分之一，且不得逾公告金額", "option_b": "可超過主項十倍", "option_c": "完全不受限制", "option_d": "一定要高於主項金額", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講重點指出，附加採購金額不得超過主項金額一定比例，講次以不逾主項金額十分之一為例，且不得逾公告金額。", "topic": "額外項金額", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，即使屬附加採購，是否可免除招標、比價或議價等程序？", "option_a": "不得當然免除，仍依未達公告金額採購辦法等辦理", "option_b": "一律完全免程序", "option_c": "只要主項已採購就不需留證", "option_d": "由廠商自行決定程序", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講指出即使是附加採購，招標、比價或議價等程序不得免除，仍依未達公告金額採購辦法辦理。", "topic": "額外項程序", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，何種情形可能構成不用共同供應契約的理由？", "option_a": "共同供應契約項目不符需求、網站查無或契約到期新約未生效", "option_b": "承辦人單純不想用", "option_c": "廠商請客比較方便", "option_d": "共同契約價格透明所以避免使用", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講整理，項目不符需求、網站查無、既有契約到期且新約未生效等，可能構成免用共同供應契約之正當理由。", "topic": "免用共同供應契約", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，不採用共同供應契約自行採購時，應如何留證？", "option_a": "填具不採用共同供應契約自行採購申請書，載明具體理由、程序與法源，經核定後辦理", "option_b": "完全不需書面", "option_c": "只需口頭告知廠商", "option_d": "只要事後補發票即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講指出不採用共同供應契約時，應填申請書，載明品名、數量、型號、規格不符理由、擬採程序與法源，經權責核定。", "topic": "免用申請", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，二代採購網帳號管理採何種制度？", "option_a": "個人帳號制", "option_b": "全校共用一組密碼", "option_c": "廠商代管帳號", "option_d": "不用帳號即可下單", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講整理二代採購網為個人帳號制，需提供身分資料與Email向窗口申請，首次登入更改密碼。", "topic": "系統帳號", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，議價是否只限於要求降價？", "option_a": "不是，也可就交期、付款等條件協商", "option_b": "是，只能降價", "option_c": "議價不得有任何條件協商", "option_d": "議價只能由廠商單方決定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講案例A指出議價不僅限降價，也可就交期、付款等條件協商；即使無降價空間仍應完備議價與決標程序。", "topic": "議價意義", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，國外藝術家演出費若確無降價空間，機關仍應注意何者？", "option_a": "可採廠商報價作底價，但仍應完備議價與決標程序", "option_b": "完全不用議價與決標程序", "option_c": "只能取消採購", "option_d": "一定要強制降價到零", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講案例A指出確無降價空間時，可採廠商報價作底價，但仍應完成議價與決標程序，可用書面或電子資料傳輸辦理。", "topic": "限制性招標議價", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，決標後新機型上市，機關要要求交付最新機型，原則上應如何處理？", "option_a": "招標文件須事先載明，否則涉及契約變更需雙方協議與書面核准", "option_b": "機關可單方要求無條件換新", "option_c": "廠商一定自動負責最新版", "option_d": "不用任何書面紀錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講案例B指出，需事先在招標文件明載依原廠最新機型交貨；未約定者屬契約變更，需雙方協議、書面紀錄與權責核准。", "topic": "新機型交付", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，契約變更的基本要求為何？", "option_a": "雙方合意，完成書面紀錄、簽名/蓋章並經權責核准", "option_b": "口頭承諾即可永遠有效", "option_c": "承辦人LINE訊息即可取代核定", "option_d": "廠商自行公告即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講案例B、C均強調契約變更須雙方合意，完成書面與核准程序，否則不能任意生效。", "topic": "契約變更", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，維護廠商遲未到場，只口頭承諾提升服務規格、延長保固，是否當然成立契約變更？", "option_a": "不當然成立，仍須書面合意與核准程序", "option_b": "當然成立，口頭承諾即可", "option_c": "口頭承諾可免除原約履行", "option_d": "只要廠商說了就有效", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講案例C指出契約變更須經雙方合意並完成書面與核准程序方生效，仍應依原約要求履行或處理遲延責任。", "topic": "口頭承諾", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，相同勞務分別支付給多名個人，每筆未達10萬元時，仍應注意何者？", "option_a": "避免分批規避疑慮，必要時提出需求、時間與分批合理性證明，議價程序原則不可免", "option_b": "每筆未達10萬元即可永遠免程序", "option_c": "只要分給個人就不適用採購法", "option_d": "不得提出任何合理性證明", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講案例D提醒相同勞務分別支付時要避免分批規避招標疑慮，若遭稽核須能提出合理性證明，議價程序原則不可免。", "topic": "分批規避與議價", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，活動採購開標前三週才想用緊急採購辦限制性招標，應注意何種限制？", "option_a": "限於不可預見之緊急事故，方得適用限制性招標", "option_b": "只要時間不夠就一定緊急", "option_c": "預算已定就必然緊急", "option_d": "數量未定就一定緊急", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講案例E指出限制性招標的緊急事由限於不可預見之緊急事故，否則不得逕用。", "topic": "緊急採購", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，最有利標實務作業期程通常需預留多久？", "option_a": "約6至8週", "option_b": "1天", "option_c": "3天", "option_d": "永遠不用預留", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講案例E指出最有利標實務作業期程較長，需預留約6至8週。", "topic": "最有利標期程", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，數量或履約時間未能確定之採購，較適合考慮何種契約？", "option_a": "開口契約", "option_b": "無效契約", "option_c": "贈與契約", "option_d": "私人借款契約", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講案例E提出解方為開口契約，適用於數量或履約時間未能確定之採購，如印刷、設備維護、翻譯等。", "topic": "開口契約", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，開口契約金額認定與評比決標基準為何？", "option_a": "以單價乘以最大需求量作為評比與決標基準", "option_b": "只看第一筆訂單", "option_c": "只看最低單價，不看最大需求量", "option_d": "由廠商事後決定總額", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講整理開口契約金額認定，以單價×最大需求量作為評比與決標基準，並於契約明訂單價表、維護頻率與付款方式。", "topic": "開口契約金額認定", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，後續擴充採購的正確作法為何？", "option_a": "於原招標文件預先載明擴充範圍、期間與上限金額，並在預算與期間內辦理", "option_b": "決標後才任意新增無上限擴充", "option_c": "不需原招標文件載明", "option_d": "可超過預算與期間限制", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講指出後續擴充應於原招標文件預先載明範圍、期間與上限金額，後續依限制性招標相關規定並在預算與載明期間內辦理。", "topic": "後續擴充", "source": "Notion：政府採購法 / 第12講"}, {"id": "GPL12-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "依第12講，下列何者屬節省公帑的採購策略？", "option_a": "相同性質標的併案採購、參考歷史決標價、善用共同供應契約與開口契約", "option_b": "永遠拆小案避免競爭", "option_c": "不留任何議價紀錄", "option_d": "不查共同供應契約價格", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第12講節省公帑操作包括相同性質標的併案採購、依標的特性選擇最低標或最有利標、參考歷史決標價、善用共同供應契約與開口契約。", "topic": "節省公帑", "source": "Notion：政府採購法 / 第12講"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>

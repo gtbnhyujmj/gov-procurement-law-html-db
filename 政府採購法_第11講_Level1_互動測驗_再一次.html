@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第11講 Level 1｜再一次</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第11講 Level 1｜再一次 25題</h1>
+    <div class="meta">第二套：偏大學承辦情境、拆案規避、共同供應、限制性招標證明、規格書同等品、驗收留痕、主驗迴避與洩密風險。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL11B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某國立大學新手承辦人不看金額級距，所有採購都用同一套簡化流程。依第11講，主要問題為何？", "option_a": "採購流程應依金額級距分流，金額愈高程序愈嚴謹、文件愈齊備", "option_b": "所有採購都應免報價", "option_c": "所有採購都只能自行核銷", "option_d": "金額級距只影響廠商付款帳號", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講強調採購流程以金額級距分流，搭配校內權責分工與法定程序，愈高金額程序愈嚴謹。", "topic": "金額級距分流", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某10萬以上案件想直接找熟識廠商議價，但限制性招標申請書沒有法定事由與書面理由。依第11講，主要缺失為何？", "option_a": "限制性招標須具備第22條法定事由與書面理由", "option_b": "限制性招標完全不需理由", "option_c": "限制性招標只能用於未達1萬元", "option_d": "限制性招標不得附任何報價資料", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講整理限制性招標對應採購法第22條第1款至第16款，須具備法定事由與書面理由。", "topic": "限制性招標", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某規格書寫明『限日本製造』，沒有功能或性能需求說明。依第11講，主要風險為何？", "option_a": "指定產地或國別可能限縮競爭，也涉及國際採購協定遵循", "option_b": "指定國別一定合法", "option_c": "規格書不得寫功能", "option_d": "只要是公告金額以上就必須指定進口", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講不合規範例包括指定美國進口、日本製造等產地或國別要求，可能限縮競爭。", "topic": "規格限縮競爭", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "某採購要買實驗室設備，承辦人只寫單一廠牌型號，沒有『或同等品』與審查資料要求。依第11講，較合規方向為何？", "option_a": "以功能、效益、性能等描述，必要時載明或同等品並要求佐證", "option_b": "永遠只能寫單一廠牌", "option_c": "不得要求任何同等品資料", "option_d": "只看廠商口頭保證即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講第26條規格原則要求以功能/效益/性能描述，不得指特定廠牌；必要時可載明或同等品並要求標準、測試、性能報告等資料。", "topic": "規格書寫法", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某標案允許同等品，但未要求投標時提出標準、測試或性能報告，導致審標時無資料可比。依第11講，缺少何者？", "option_a": "投標時預先提出同等品證明資料，以利一次到位審查", "option_b": "同等品不得審查", "option_c": "同等品只要照片即可", "option_d": "同等品只准決標後提出", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講建議同等品資料於投標時預先提出，例如標準、測試、性能報告等，以利審查。", "topic": "同等品審查", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "依第11講，下列哪一種規格寫法較能降低單一鎖定疑慮？", "option_a": "列2家以上品牌並輔以或同等品", "option_b": "只寫唯一品牌且不得同等品", "option_c": "只寫特定國家進口", "option_d": "只寫廠商業務員姓名", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講合規範例為指定2家以上品牌並輔以或同等品，例如燈管含A/B品牌或同等品，以避免單一鎖定。", "topic": "合規品牌寫法", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "某系所同一天要買同一批教學設備，總額超過100萬元，卻切成多張未達公告金額請購。依第11講，主要風險為何？", "option_a": "可能構成為逃避法令之分批拆案規避", "option_b": "這一定是合法節省時間", "option_c": "同一需求必須永遠拆案", "option_d": "拆案後完全不用看總預算", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講指出同一需求、同一時間、同一或相近標的、同一地點/範圍，通常應合併計算，禁止為逃避法令分批。", "topic": "拆案規避", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "招標文件含選購與後續擴充項目，承辦人只用本次基本採購金額判斷是否達公告。依第11講，主要問題為何？", "option_a": "選購/擴充金額應納入金額總額一併考量", "option_b": "選購項目永遠不算採購金額", "option_c": "擴充金額只在驗收後計算", "option_d": "只看廠商願意收多少", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講實務要點指出，招標文件含選購/擴充項者，應納入金額總額一併考量。", "topic": "選購擴充金額", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "某校同年度有建築、機電、景觀三類不同專業需求，各自施工條件與專業不同並可說明合理性。依第11講，較可能如何處理？", "option_a": "可能屬得分別辦理之合理例外", "option_b": "一定是違法拆案", "option_c": "一定只能合併成同一標且不可說明", "option_d": "完全不用留下理由", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講指出得分別辦理的例外包括標的不同、施工/供應地區不同、需求條件不同、行業/專業不同，但須可說明合理性。", "topic": "可分別辦理", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "某案確有分批履約必要，但承辦人以每批小額金額個別判斷採購方式。依第11講，較正確作法為何？", "option_a": "如需分批，仍應以總預算額認定採購方式與公告義務", "option_b": "分批後各批永遠獨立計算", "option_c": "只看第一批金額", "option_d": "只看最後一批金額", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講提醒如需分批，應以總預算額認定採購方式與公告義務。", "topic": "總預算認定", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某品項已在共同供應契約中，使用單位卻跳過共同契約自行找非共同供應商。依第11講，主要問題為何？", "option_a": "共同供應契約品項原則應優先透過共同契約採購", "option_b": "共同供應契約品項不得採購", "option_c": "共同供應契約只適用私人公司", "option_d": "只要使用單位喜歡即可跳過", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講整理屬共同供應契約品項者，原則應優先透過共同契約採購。", "topic": "共同供應契約", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "某非共同供應商案件金額12萬元，使用單位只附報價單自行核銷。依第11講校內流程，較應如何？", "option_a": "10萬元以上通常應檢附採購規格書，送事務組審核", "option_b": "12萬元可免任何文件自行核銷", "option_c": "只需口頭詢價即可", "option_d": "只能用共同供應契約，不可非共同供應", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講非共同供應商校內標準中，10萬元以上應檢附採購規格書，送事務組審核。", "topic": "非共同供應", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "某未達1萬元採購，申請單位本人同時作驗收或證明。依第11講校內範例，主要疑義為何？", "option_a": "核銷時驗收或證明不得由申請單位本人", "option_b": "未達1萬元一定要公開招標", "option_c": "未達1萬元不能採購", "option_d": "未達1萬元必須最有利標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講未達1萬元流程中，核銷支出憑證黏貼成合，驗收或證明不得由申請單位本人。", "topic": "未達1萬元", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "某1萬至5萬元採購沒有估價單，直接核銷。依第11講校內範例，缺少何者？", "option_a": "至少1家詢價與估價單", "option_b": "至少14日公開招標", "option_c": "評選委員會紀錄", "option_d": "共同投標協議書", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講1萬至5萬元流程中，詢價至少1家並檢附估價單。", "topic": "1萬至5萬元", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "某資訊設備採購未會簽圖資或資訊專責單位即下單。依第11講校內範例，主要問題為何？", "option_a": "資訊設備通常須經圖資或資訊專責單位會簽審核", "option_b": "資訊設備不得採購", "option_c": "資訊設備只要使用者口頭同意", "option_d": "資訊設備一定免驗收", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講多個金額級距均提到資訊設備須經圖資單位或相關資訊專責單位會簽或審核。", "topic": "資訊設備會辦", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "某50萬元財物採購未填財物/勞務請購規格書，也未公開徵求書面報價。依第11講校內範例，問題為何？", "option_a": "10萬至未達100萬通常需規格書，並於工程會網站公開徵求至少5日", "option_b": "50萬元可免任何程序", "option_c": "50萬元一定屬未達1萬元", "option_d": "50萬元只能自行核銷", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講10萬至未達100萬元流程：填財物/勞務請購規格書，公開徵求書面報價或企畫書至少5日。", "topic": "10萬至未達100萬", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "某120萬元財物採購未公告公開招標，只用5日公開徵詢處理。依第11講校內範例，主要問題為何？", "option_a": "達公告金額公開招標等標期至少14日，電子領標至少11日", "option_b": "達公告金額只需5日公開徵詢", "option_c": "120萬元一定未達公告金額", "option_d": "達公告金額不得公開招標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講達公告金額範例指出公開招標工程會網站公告等標期至少14日，電子領標至少11日。", "topic": "達公告金額", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "達公告金額案件若採限制性招標，只附一張廠商報價單，沒有完整證明。依第11講，主要缺失為何？", "option_a": "採限制性招標須附完整證明與法定事由", "option_b": "限制性招標不得有任何證明", "option_c": "一張報價單永遠足夠", "option_d": "達公告金額不能有任何會辦", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講達公告金額流程指出，如採限制性招標須附完整證明；限制性招標本身也須具法定事由與書面理由。", "topic": "限制性招標證明", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "審標時發現同等品資料有疑義，機關直接判不合格但未敘明理由也未通知。依第11講，較正確作法為何？", "option_a": "有疑義得通知廠商說明，不合格應敘明理由並通知與公告", "option_b": "不合格永遠不需理由", "option_c": "只需私下告訴其中一家廠商", "option_d": "同等品資料不得審查", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講開標、審標與決標實務中指出，依招標文件審查，有疑義得通知廠商說明；不合格應敘明理由並通知與公告。", "topic": "審標說明", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "某採購契約沒有明確記載到貨驗收、測試完成日期、交接人與文件清單。依第11講，主要缺少何者？", "option_a": "履約交付與驗收管理的明確約定", "option_b": "國內優先權重", "option_c": "共同投標分攤比例", "option_d": "最有利標配分表", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講履約交付與驗收管理指出，應明確載明到貨驗收、測試完成日期、交接人、文件移交清單等。", "topic": "交貨完工", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "某設備驗收未拍照、未建序號、未填驗收紀錄。依第11講，主要風險為何？", "option_a": "驗收留痕不足，不利履約與財產管理", "option_b": "驗收不得拍照", "option_c": "序號建檔只適用私人公司", "option_d": "驗收紀錄只能決標前製作", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講驗收管理提到需拍照、序號建檔、填具驗收紀錄等，以確保交付與財產管理留痕。", "topic": "驗收紀錄", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "某案由同一承辦採購人員負責請購、採購、又擔任主驗。依第11講，主要違反何種原則？", "option_a": "承辦採購人員不得擔任其承辦案件之主驗或監造", "option_b": "承辦人一定要兼任主驗", "option_c": "驗收不得分工", "option_d": "採購案不需要主驗", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講依第71條第3項整理，承辦採購人員不得擔任其承辦案件之主驗或監造。", "topic": "主驗迴避", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "採購承辦人的配偶被安排擔任該案主驗。依第11講，主要問題為何？", "option_a": "本人、配偶、三親等內親屬亦不得擔任主驗或監造", "option_b": "配偶應優先主驗", "option_c": "只有本人不能主驗，配偶一定可以", "option_d": "親屬關係不需揭露", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講指出承辦採購人員本人、配偶、三親等內親屬亦不得擔任主驗或監造。", "topic": "親屬主驗", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "投標前，承辦人把領標廠商名單與家數告訴特定廠商。依第11講，主要風險為何？", "option_a": "違反保密義務，可能涉及洩密或圖利風險", "option_b": "投標前本來就應公開給特定廠商", "option_c": "領標家數不是採購資訊", "option_d": "只要不是底價就可任意洩漏", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講整理投標前不得洩漏底價、領標名單、家數等，可能涉及採購法、刑法與貪污治罪條例風險。", "topic": "洩漏領標資訊", "source": "Notion：政府採購法 / 第11講 / 再一次"}, {"id": "GPL11B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "某承辦人故意把底價透露給特定廠商，使其取得得標優勢。依第11講，可能涉及何種風險？", "option_a": "採購洩密、圖利等刑責風險", "option_b": "完全只是行政小錯", "option_c": "只影響核銷格式", "option_d": "只需補交估價單即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第11講保密義務與處罰提到，洩漏底價、領標名單、家數等可能涉及採購法第89條、刑法第132條、貪污治罪條例第6條等洩密、圖利風險。", "topic": "圖利風險", "source": "Notion：政府採購法 / 第11講 / 再一次"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>

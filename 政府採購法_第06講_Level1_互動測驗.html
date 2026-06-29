@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第06講 Level 1｜25題互動測驗</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第06講 Level 1｜25題互動測驗</h1>
+    <div class="meta">本講主軸：GPA、國民待遇、不歧視、Offset禁止、資訊透明、救濟、門檻與第98條社會義務。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL06-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，GPA在我國政府採購制度中的重要承接規範為政府採購法第幾條？", "option_a": "第6條", "option_b": "第17條", "option_c": "第70條", "option_d": "第98條", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第06講指出政府採購法第17條是GPA精神在我國法的重要承接規範，涉及外國廠商、互惠、國民待遇與不歧視。", "topic": "GPA法源", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，WTO政府採購協定（GPA）的性質為何？", "option_a": "WTO架構下之多邊參與性協定", "option_b": "我國單方面國內行政命令", "option_c": "只適用私人買賣契約", "option_d": "完全不涉及政府採購", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理GPA屬WTO架構下之多邊參與性協定，僅加入GPA之會員相互承擔權利義務。", "topic": "GPA性質", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，我國於何時正式生效加入GPA？", "option_a": "民國87年5月27日", "option_b": "民國88年5月27日", "option_c": "民國98年7月15日", "option_d": "民國100年1月1日", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第06講明示我國於民國98年7月15日正式生效加入GPA。", "topic": "GPA加入時間", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，判斷GPA是否適用，主要應以何者為準？", "option_a": "開放清單", "option_b": "廠商口頭聲明", "option_c": "承辦人個人喜好", "option_d": "投標廠商數量多寡", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理GPA適用條件以開放清單為準，包括列名機關或事業機構、開放標的類別、金額門檻、個別保留與限制。", "topic": "GPA適用條件", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，下列何者不是GPA適用判斷的主要條件？", "option_a": "列名之機關或事業機構", "option_b": "開放之工程、財物、勞務標的", "option_c": "金額門檻", "option_d": "承辦人是否喜歡外國廠商", "correct": "D", "points": 1, "required": "TRUE", "explanation": "GPA適用判斷包括機關或事業機構、標的類別、金額門檻、保留與限制；承辦人喜好不是判斷條件。", "topic": "GPA適用條件", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，下列何者屬GPA不適用範圍之一？", "option_a": "無對價之取得，例如接受捐贈", "option_b": "所有公告金額以上採購", "option_c": "所有財物採購", "option_d": "所有公開招標", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理無對價之取得，例如機關或國營事業接受捐贈，屬GPA不適用範圍。", "topic": "不適用範圍", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，下列何者屬可排除GPA適用的例外？", "option_a": "國家安全、公共道德或秩序、安全、保護生命健康等", "option_b": "單純想排除外商競爭", "option_c": "承辦人覺得英文文件麻煩", "option_d": "國內廠商要求不要開放", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講列出GPA例外包含國家安全、公共道德秩序或安全、保護人類與動植物生命或健康、智慧財產權必要保護、弱勢或慈善機構等社會政策優惠。", "topic": "GPA例外", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，GPA基本原則中的國民待遇與不歧視，意義較接近下列何者？", "option_a": "對其他簽署國之產品、服務與廠商不得差別待遇", "option_b": "必須永遠優先排除外國廠商", "option_c": "只要是外國廠商就一定不得投標", "option_d": "可以任意設定與履約無關的歧視條件", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理國民待遇與不歧視，是對其他簽署國之產品、服務與廠商不得差別待遇。", "topic": "國民待遇與不歧視", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，非GPA簽署國廠商可否投標？", "option_a": "GPA不禁止，但應依機關規定與互惠原則處理", "option_b": "GPA明文禁止所有非簽署國廠商投標", "option_c": "一定可以無條件投標且不受任何規範", "option_d": "只能由廠商自行決定是否適用我國法", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講常見疑義提醒，非簽署國廠商可否投標，GPA不禁止，但應依機關規定與互惠原則處理。", "topic": "非簽署國廠商", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，GPA下的供應商資格條件設計應如何？", "option_a": "具體、客觀、與履約必要相稱", "option_b": "越能排除外商越好", "option_c": "完全不需公開", "option_d": "依廠商國籍任意差別待遇", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講提醒資格與能力要求應與履約必要相稱，避免形成貿易不當限制；機關Check-list亦要求具體、客觀、與標的相稱。", "topic": "資格條件", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，常年合格名單的管理方式較符合GPA精神者為何？", "option_a": "得設固定名單並定期審查，常見年度或兩年一審", "option_b": "一旦列名永遠不得審查", "option_c": "只允許本國廠商列名", "option_d": "完全不通知申請人結果", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理常年合格名單得設固定名單並定期審查，常見年度或兩年一審。", "topic": "常年合格名單", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，有廠商要求參與且未在常年合格名單者，機關應如何處理？", "option_a": "應即啟動資格審查並通知審定結果", "option_b": "一律拒絕，不必審查", "option_c": "永遠等下一年度再說", "option_d": "只通知本國廠商，不通知外國廠商", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理有廠商要求參與且未在名單者，應即啟動資格審查；審定結果含除名或終止使用名單應通知申請人。", "topic": "資格審查通知", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，下列何者可作為供應商排除事由之一，但仍須遵守國民待遇與不歧視？", "option_a": "破產或虛偽陳述", "option_b": "只是外國廠商", "option_c": "承辦人不喜歡其公司名稱", "option_d": "該廠商曾要求合法救濟", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理破產、虛偽陳述等法定事由可排除，但仍須遵守國民待遇與不歧視。", "topic": "排除事由", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，補償性交易（Offset）之定義較接近何者？", "option_a": "以技術移轉、在地採購比例、平衡貿易等作為參與或得標條件", "option_b": "正常履約保證金", "option_c": "合法驗收程序", "option_d": "一般決標公告", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講定義Offset為以技術移轉、在地採購比例、平衡貿易等要求，作為參與或得標條件，以保護本國產業或排除外商參與。", "topic": "Offset禁止", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，下列何者原則上不得在資格審查、審標、決標中要求或考量？", "option_a": "補償性交易", "option_b": "履約能力", "option_c": "財務能力", "option_d": "符合標的所需技術能力", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理不得在資格審查、審標、決標要求或考量補償性交易。", "topic": "Offset禁止", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，下列何者屬應避免列為要件的Offset型態？", "option_a": "要求得標者一定比例零件在地採購", "option_b": "要求廠商具備履約必要能力", "option_c": "要求文件按期送達", "option_d": "要求保護商業機密", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講列出Offset常見型態包含要求在地製造、一定比例零件在地採購、購買國內產品達一定額度、技術授權或產能轉移等。", "topic": "Offset型態", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，GPA相關決標資訊原則上應於決標後幾天內公告？", "option_a": "10天內", "option_b": "30天內", "option_c": "72天內", "option_d": "3年內", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第06講整理決標後72天內，應於適當刊物公告採購性質、標的數量、機關、決標日期、得標者、決標金額等資訊。", "topic": "決標資訊公告", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，下列何者屬決標資訊公告內容之一？", "option_a": "採購性質、標的與數量、得標者名稱與地址、決標金額", "option_b": "承辦人私人旅遊計畫", "option_c": "廠商負責人家庭照片", "option_d": "與採購無關的私人通訊", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講列出決標資訊公告內容包括採購性質、標的與數量、機關與地址、決標日期、得標者名稱與地址、決標金額等。", "topic": "決標資訊公告", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，GPA對法規與程序公開的要求為何？", "option_a": "及時揭露適用法律、規章、司法判決與行政程序", "option_b": "所有規範均不得公開", "option_c": "只向得標廠商私下說明", "option_d": "只在驗收後銷毀文件", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理法規與程序應及時對外揭露，便於其他簽署國與供應商理解。", "topic": "資訊透明", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，GPA下供應商申訴程序期間通常不得少於幾日？", "option_a": "3日", "option_b": "5日", "option_c": "10日", "option_d": "72日", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第06講整理供應商申訴程序保障中，期間通常不得少於10日。", "topic": "供應商申訴", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，GPA相關採購文件至少應保存多久？", "option_a": "6個月", "option_b": "1年", "option_c": "3年", "option_d": "10年", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第06講整理供應商申訴與救濟相關要求中，採購文件至少保存3年。", "topic": "檔案保存", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，我國GPA開放市場保護配套中，貨品/勞務門檻約為新臺幣多少？", "option_a": "65萬元", "option_b": "650萬元", "option_c": "6,500萬元", "option_d": "2.5億元", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第06講整理保護配套與門檻設定中，貨品/勞務約為新臺幣650萬元。", "topic": "門檻設定", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，我國GPA開放市場保護配套中，工程門檻約為新臺幣多少？", "option_a": "650萬元", "option_b": "1,000萬元", "option_c": "2.5億元", "option_d": "10億元", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第06講整理保護配套與門檻設定中，工程約為新臺幣2.5億元。", "topic": "門檻設定", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，得標廠商在國內員工總數逾多少人者，履約期間應雇用身心障礙者與原住民？", "option_a": "10人", "option_b": "50人", "option_c": "100人", "option_d": "500人", "correct": "C", "points": 1, "required": "TRUE", "explanation": "第06講整理採購法第98條，得標廠商在國內員工總數逾100人者，履約期間應雇用身心障礙者與原住民。", "topic": "第98條社會義務", "source": "Notion：政府採購法 / 第06講"}, {"id": "GPL06-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，得標廠商雇用身心障礙者與原住民之合計比例原則為至少達總人數多少？", "option_a": "1%", "option_b": "2%", "option_c": "5%", "option_d": "10%", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第06講整理第98條社會義務，合計至少達總人數2%，實務上常以各1%理解，採整數計算，未達者免。", "topic": "第98條社會義務", "source": "Notion：政府採購法 / 第06講"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>

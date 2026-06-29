@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第06講 Level 1｜再一次</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第06講 Level 1｜再一次 25題</h1>
+    <div class="meta">第二套：偏GPA適用清單、資格審查、Offset、資訊透明、救濟、文件保存與第98條社會義務。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL06B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某機關辦理採購時，只因有外國廠商表示興趣，就直接認定必然適用GPA。依第06講，較正確的判斷方式為何？", "option_a": "應檢查是否屬開放清單之機關、標的、金額門檻及保留限制", "option_b": "只要有外國廠商就一定適用GPA", "option_c": "只要是公開招標就一定適用GPA", "option_d": "由外國廠商自行決定是否適用GPA", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講強調GPA適用條件以開放清單為準，包括列名機關或事業機構、開放標的類別、金額門檻、個別保留與限制。", "topic": "GPA適用判斷", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某採購標的未列入GPA開放清單，但金額很高。依第06講，仍應注意何者？", "option_a": "GPA適用須同時看開放機關、標的與門檻，金額高不代表一定適用", "option_b": "只要金額高就必然適用GPA", "option_c": "只要金額高就不得讓外國廠商投標", "option_d": "金額越高越可以忽略開放清單", "correct": "A", "points": 1, "required": "TRUE", "explanation": "GPA不是只看金額，還要看開放清單之機關、事業機構、標的類別、門檻與保留限制。", "topic": "開放清單", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某國營事業接受外國企業無償捐贈設備。依第06講，這類無對價取得與GPA關係為何？", "option_a": "屬GPA不適用範圍之一", "option_b": "必然適用GPA招標程序", "option_c": "一定要辦公開招標", "option_d": "一定要公告決標金額", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理無對價之取得，例如機關或國營事業接受捐贈，屬GPA不適用範圍。", "topic": "無對價取得", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "某採購涉及武器、彈藥及戰爭物資。依第06講，機關若排除GPA適用，較可能依何種例外？", "option_a": "國家安全例外", "option_b": "補償性交易例外", "option_c": "公開招標例外", "option_d": "社群投票例外", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講列出國家安全例外，包括武器、彈藥、戰爭物資等。", "topic": "GPA例外", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某採購規格限制是為了保護人類、動植物生命或健康。依第06講，這可能屬於何種處理方向？", "option_a": "GPA例外或保留判斷中可考量的正當理由", "option_b": "一律屬違法歧視", "option_c": "必然屬補償性交易", "option_d": "完全不需要書面說明", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講列出可排除GPA適用的例外包含保護人類、動植物生命或健康。", "topic": "GPA例外", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "某招標文件規定：同樣符合履約能力者，本國廠商給滿分，GPA簽署國廠商一律扣分。依第06講，主要問題為何？", "option_a": "違反國民待遇與不歧視原則", "option_b": "符合GPA鼓勵差別待遇之精神", "option_c": "只要寫在文件中就一定合法", "option_d": "這是採購法第98條要求", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理國民待遇與不歧視，是對他簽署國之產品、服務與廠商不得差別待遇。", "topic": "國民待遇", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "某非GPA簽署國廠商想投標。依第06講，機關較適當的初步態度為何？", "option_a": "GPA不禁止，但應依機關規定與互惠安排處理", "option_b": "一律無條件給予GPA待遇", "option_c": "一律不得投標", "option_d": "由該廠商自行決定所有規則", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講提到非簽署國廠商，GPA不禁止簽署國與非簽署國互動，但應依機關規定與互惠安排。", "topic": "互惠原則", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某簡單文具採購要求外國廠商須有十年大型工程實績。依第06講，主要問題為何？", "option_a": "資格能力要求與履約必要不相稱，可能形成不當限制", "option_b": "資格越高越一定合法", "option_c": "GPA要求所有採購都必須設定大型工程實績", "option_d": "文具採購一定要用工程資格", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講提醒資格與能力要求應與履約必要相稱，避免形成貿易不當限制。", "topic": "資格條件相稱性", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "某GPA適用案件直到開標當天才公布投標資格條件。依第06講，主要問題為何？", "option_a": "投標條件應於適當期間公開，便於有意願廠商參與", "option_b": "資格條件越晚公布越公平", "option_c": "GPA禁止事前公告資格條件", "option_d": "只要本國廠商知道即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理投標條件應於適當期間公開，便於有意願廠商參與。", "topic": "資格條件公告", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "某機關設常年合格名單後，完全不審查、不通知、不更新。依第06講，哪一點最不符合GPA程序精神？", "option_a": "名單應定期審查，審定結果或除名終止使用名單應通知申請人", "option_b": "常年名單本來就不得審查", "option_c": "名單越封閉越符合GPA", "option_d": "只要有名單就不用處理新申請人", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理常年合格名單得設固定名單並定期審查；審定結果含除名或終止使用名單應通知申請人。", "topic": "常年合格名單", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某GPA簽署國廠商未在名單內但要求參與，機關直接拒絕且不審查。依第06講，較適當作法為何？", "option_a": "應啟動資格審查並通知審定結果", "option_b": "未在名單者一律永久不得參與", "option_c": "只允許本國廠商補審", "option_d": "等三年後再統一處理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理有廠商要求參與且未在名單者，應即啟動資格審查並通知審定結果。", "topic": "新申請資格審查", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "某廠商有破產或虛偽陳述情形。依第06講，機關排除該廠商時仍應注意何者？", "option_a": "仍須遵守國民待遇與不歧視", "option_b": "可只排除外國廠商，不排除本國廠商", "option_c": "可不說明任何法定事由", "option_d": "只要外國廠商就直接視為破產", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理破產、虛偽陳述等法定事由可排除，但仍須遵守國民待遇與不歧視。", "topic": "排除事由", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "某GPA適用採購規定：外商得標後必須將30%零件改向本國廠商採購，否則不得得標。依第06講，主要問題為何？", "option_a": "可能構成禁止的補償性交易Offset", "option_b": "這是GPA強制要求", "option_c": "這是採購文件保存要求", "option_d": "這是供應商申訴期間要求", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講將要求一定比例零件在地採購列為Offset常見型態，原則不得作為資格、審標、決標要求。", "topic": "Offset禁止", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "某招標文件要求得標外商必須移轉特定技術給國內廠商，作為決標條件。依第06講，較可能違反何者？", "option_a": "不得要求或考量補償性交易作為決標要件", "option_b": "決標後72天公告要求", "option_c": "文件保存3年要求", "option_d": "申訴期間10日要求", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講列出技術授權或特定產能轉移屬Offset常見型態，且不得在資格審查、審標、決標要求或考量補償性交易。", "topic": "Offset禁止", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "某機關決標後完全不公告採購性質、得標者與決標金額。依第06講，主要違反何種GPA精神？", "option_a": "資訊透明與決標資訊公告", "option_b": "社會義務雇用比例", "option_c": "無對價取得", "option_d": "破產排除事由", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理決標後72天內，應於適當刊物公告採購性質、標的與數量、機關與地址、得標者、決標金額等資訊。", "topic": "資訊透明", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "某GPA相關採購於決標後第100天才公告決標資訊。依第06講，問題為何？", "option_a": "超過決標後72天內公告決標資訊的要求", "option_b": "只要3年內公告即可", "option_c": "只要10日內公告即可", "option_d": "決標資訊永遠不得公告", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理決標資訊應於決標後72天內公告。", "topic": "72天公告", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "未得標廠商要求必要資訊，機關在不影響機密與爭議處理的前提下應如何處理？", "option_a": "提供相關必要資訊", "option_b": "一律拒絕且不說明", "option_c": "只提供給本國未得標廠商", "option_d": "只提供商業機密資料", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理在不影響機密與爭議處理前提下，應向未得標者提供相關必要資訊。", "topic": "未得標資訊", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "GPA要求資訊透明，是否代表所有商業機密都必須公開？", "option_a": "不是，應兼顧資訊透明與商業機密保護", "option_b": "是，所有商業機密都必須公開", "option_c": "不是，因此所有資訊都不得公開", "option_d": "只需保護本國廠商秘密", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理年度統計與機密保護時指出，建置公開統計制度，並對涉商業機密之資訊予以保護。", "topic": "機密保護", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "某機關規定供應商申訴期間只有2日。依第06講，主要問題為何？", "option_a": "GPA程序保障中，期間通常不得少於10日", "option_b": "申訴期間必須只有1日", "option_c": "供應商完全不得申訴", "option_d": "申訴只能由得標廠商提出", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理供應商申訴程序保障，期間通常不得少於10日。", "topic": "申訴保障", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "某機關決標後半年即銷毀所有採購文件。依第06講，較可能違反何種要求？", "option_a": "採購文件至少保存3年", "option_b": "決標後72天公告", "option_c": "貨品門檻650萬元", "option_d": "工程門檻2.5億元", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理採購文件至少保存3年。", "topic": "採購文件保存", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "某GPA簽署國認為他國未履約且損及利益。依第06講，可能如何處理？", "option_a": "與對方協商並通知WTO處理", "option_b": "只能由個別供應商私下談判", "option_c": "完全沒有國與國爭端處理機制", "option_d": "只能向地方採購承辦人申訴", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理國與國爭端，認為他簽署國未履約且損及利益者，得與對方協商並通知WTO處理。", "topic": "國與國爭端", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "依第06講，我國加入GPA後，對我國廠商的市場機會主要是什麼？", "option_a": "可競逐主要貿易夥伴之政府採購市場", "option_b": "所有外國市場都無條件保證得標", "option_c": "只能投標國內小額採購", "option_d": "不得參與美、歐、日等市場", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講指出我國加入GPA後，可競逐主要貿易夥伴如美、歐、日、韓、新加坡等之政府採購市場。", "topic": "市場機會", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "某貨品採購金額約500萬元。依第06講所列保護配套門檻，與貨品/勞務約650萬元相比，較可能如何判斷？", "option_a": "可能未達本講所述貨品/勞務GPA門檻，仍須依實際清單與規定確認", "option_b": "一定超過650萬元", "option_c": "一定屬工程門檻2.5億元", "option_d": "金額越低越一定適用GPA", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理貨品/勞務GPA門檻約650萬元；實務仍須依開放清單、門檻與保留確認。", "topic": "GPA門檻", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "外國廠商在我國履約且國內員工逾100人。依第06講，第98條社會義務是否可能適用？", "option_a": "可能適用，外國廠商在我國履約亦適用", "option_b": "外國廠商永遠不適用", "option_c": "只適用員工未滿100人者", "option_d": "只適用非得標廠商", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講整理第98條社會義務，得標廠商在國內員工總數逾100人者適用，且外國廠商在我國履約亦適用。", "topic": "第98條社會義務", "source": "Notion：政府採購法 / 第06講 / 再一次"}, {"id": "GPL06B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "依第06講機關版Check-list，涉及第98條社會義務時，招標文件較應如何處理？", "option_a": "載明雇用身心障礙者與原住民之承諾、計算方式與查核表單", "option_b": "完全不提社會義務", "option_c": "只要求外國廠商負擔，國內廠商免除", "option_d": "只以口頭告知即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第06講實務操作重點提醒，應依第98條於招標文件載明雇用身心障礙者與原住民之承諾、計算方式與查核表單。", "topic": "招標文件社會義務", "source": "Notion：政府採購法 / 第06講 / 再一次"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>

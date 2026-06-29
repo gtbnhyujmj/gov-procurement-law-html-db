@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第13講 Level 1｜再一次</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第13講 Level 1｜再一次 25題</h1>
+    <div class="meta">第二套：偏決標公告逾期、未得標通知送達、主要部分轉包、分包報備、三級品管、品管人員、驗收時程、減價收受與部分驗收。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL13B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某公告金額以上採購決標後，機關拖了45日才公告決標結果。依第13講，主要問題為何？", "option_a": "決標結果原則應於決標日起30日內公告", "option_b": "決標結果可於驗收後一年再公告", "option_c": "公告金額以上採購完全不用公告", "option_d": "只通知得標廠商即可，不需公告", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第61條整理，公告金額以上採購決標後，應於一定期間內公告決標結果；一定期間以決標日起算30日內。", "topic": "決標公告逾期", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某機關未留下通知未得標廠商的送達證明。依第13講，主要風險為何？", "option_a": "通知內容與時間點會影響救濟期間起算，應留存送達證明", "option_b": "未得標廠商永遠不能救濟", "option_c": "送達證明只適用私人買賣", "option_d": "未得標通知一定不重要", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講實務提醒，通知未得標廠商之內容與時間點會影響救濟期間起算，務必留存送達證明。", "topic": "未得標通知", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某採購涉及安全機密，機關仍完整公開決標金額與敏感資訊。依第13講，較妥當作法為何？", "option_a": "涉及機密或安全等情事，經核准得不公告或不揭露決標金額，並控制揭露範圍", "option_b": "所有資訊都必須毫無遮蔽公開", "option_c": "只要有機密就完全不留任何核准文件", "option_d": "由廠商自行決定公告內容", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第61條與實務提醒指出，涉及商業性轉售、機密或安全者，經核准得不公告或不揭露決標金額；公告時可適度遮蔽並留存核准文件。", "topic": "機密公告", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "某決標案只做紙本內簽，未將決標資料電子傳送至指定資料庫。依第13講，缺少何種程序？", "option_a": "依第62條以電子方式傳送決標資料至主管機關指定資料庫", "option_b": "品管人員登錄", "option_c": "部分驗收", "option_d": "分包商報備", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第62條整理，決標資料應以電子方式傳送至主管機關指定資料庫，刊登於政府採購公報或系統。", "topic": "電子傳輸", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某設計監造契約未明定設計錯誤、監造不實、管理不善造成損害的賠償責任。依第13講，主要缺失為何？", "option_a": "契約要項應明定相關損害賠償責任", "option_b": "設計監造永遠不用負責", "option_c": "契約不得寫賠償責任", "option_d": "只要口頭提醒即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第63條指出，規劃、設計、監造、管理契約要項應明定廠商因設計錯誤、監造不實、管理不善致機關受損之損害賠償責任。", "topic": "契約要項責任", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "都市計畫重大變更後，原工程繼續履約已不符公共利益。機關若要解除契約，依第13講應如何處理？", "option_a": "報請上級機關核准，並補償廠商因此所受損失", "option_b": "承辦人電話通知即可解除且不補償", "option_c": "直接拒絕付款即可", "option_d": "一定不得解除契約", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第64條指出，因政策變更致繼續履約不符公共利益，機關得報請上級機關核准中止或解除契約，並補償廠商損失。", "topic": "政策變更解除", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "得標廠商將招標文件標示的主要部分全部交由其他公司履行。依第13講，主要問題為何？", "option_a": "主要部分須由得標廠商自行履行，不得轉包", "option_b": "主要部分最適合轉包", "option_c": "只要價格不變即可轉包", "option_d": "轉包只需告知分包商即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第65條整理，得標廠商應自行履行，特別是主要部分須親自履行，不得轉包他人；主要部分以招標文件標示為準。", "topic": "主要部分轉包", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某招標文件未清楚標示契約主要部分，後續發生轉包/分包爭議。依第13講，文件設計上應注意何者？", "option_a": "招標文件務必清楚標示主要部分", "option_b": "招標文件不得標示主要部分", "option_c": "主要部分由廠商事後自定", "option_d": "主要部分只看廠商營業額", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講實務提醒，招標文件務必清楚標示主要部分，並建立分包報備與權利設定流程。", "topic": "主要部分標示", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "得標廠商將非主要部分交由專業廠商施作，但完全未向機關報備。依第13講，主要缺失為何？", "option_a": "非主要部分得分包，但須向機關報備", "option_b": "非主要部分不得分包", "option_c": "分包一律等於違法轉包", "option_d": "分包只需通知投標失敗廠商", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第67條整理，非主要部分得分包予其他廠商，但須向機關報備。", "topic": "分包未報備", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "某工程將鋼筋、模板等專業項目分包，且金額達一定比率。依第13講，除了報備外，還可能需如何處理？", "option_a": "應送主管機關備查", "option_b": "必須秘密分包", "option_c": "一定解除契約", "option_d": "不得有任何分包合約", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第67條指出，專業工程如鋼筋、模板等得分包，專業項目或數量/金額達一定比率者，應送主管機關備查。", "topic": "專業工程分包", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "得標廠商對分包部分未設定必要請款權利，造成分包商權益保障不足。依第13講，應注意何者？", "option_a": "得標廠商應就分包部分設定必要權利，以保障分包廠商權益", "option_b": "分包商權益完全不需處理", "option_c": "分包商只能向承辦人請款", "option_d": "分包商不得有任何請求權", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第67條指出，得標廠商應就分包部分對分包廠商設定必要權利，例如價金或報酬請求權。", "topic": "分包商權益", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "採購契約約定將部分報酬請求權設定給金融機構。依第13講，這屬於哪一條的方向？", "option_a": "第68條價金或報酬請求權之設定或讓與", "option_b": "第61條決標公告", "option_c": "第71條驗收", "option_d": "第70條品管", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第68條整理，採購契約對價金或報酬請求權之全部或一部，得為設定或讓與約定，例如設定予分包商或金融機構。", "topic": "債權讓與", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "公告金額以上工程招標文件完全未要求品質計畫、檢驗程序、自主檢查表。依第13講，主要風險為何？", "option_a": "工程品質管理要求不足，公告金額以上常要求品質計畫等文件", "option_b": "工程不得要求品質文件", "option_c": "品質管理只在驗收後才需要", "option_d": "品質計畫由廠商口頭保證即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第70條常見實務範例指出，公告金額以上工程招標文件要求提送整體/分項品質計畫、檢驗程序、自主檢查表等。", "topic": "品質計畫", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "某工程達查核金額以上，卻未設專任品質管理人員，也未登錄主管機關系統。依第13講，主要問題為何？", "option_a": "查核金額以上工程須設置專任品管人員並登錄系統", "option_b": "查核金額以上不用品管", "option_c": "品管人員只需驗收後補登", "option_d": "品管人員由廠商臨時口頭指定即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講常見實務範例指出，查核金額以上如工程5,000萬元以上，須設置專任品質管理人員，並依規定登錄主管機關系統。", "topic": "查核金額品管人員", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "某2億元以上鉅額工程只設1名專任品管人員。依第13講常見實務範例，主要疑義為何？", "option_a": "鉅額工程專任品管人員至少2名，限制更嚴格", "option_b": "鉅額工程完全不用品管人員", "option_c": "鉅額工程只能設1名品管人員", "option_d": "品管人員越少越符合效率", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講常見實務範例指出，鉅額工程如2億元以上，專任品管人員至少2名，資格、在場與不得兼任限制更嚴格。", "topic": "鉅額工程品管", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "工程查核發現缺失後，承商只修當下問題，未做預防再發與持續精進。依第13講，缺少PDCA哪一環精神？", "option_a": "A 改善", "option_b": "P 計畫", "option_c": "D 執行", "option_d": "C 查核", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講PDCA中，A改善包含缺失改善、預防再發與持續精進。", "topic": "PDCA改善", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "某監造單位以為工程品質只由廠商QC負責，自己不用查驗或追蹤缺失。依第13講，主要錯誤為何？", "option_a": "第2級QA由監造單位/主辦機關負責品質保證與缺失追蹤", "option_b": "監造單位完全不用參與品管", "option_c": "主管機關才是唯一品管者", "option_d": "三級品管只有一級", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講三級品管中，第2級QA為監造單位或主辦機關之品質保證系統，包含材料施工查驗、紀錄留存、成效檢討與缺失改善追蹤。", "topic": "三級品管角色", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "工程施工查核結果很差，廠商認為只要本案完工就完全無後續影響。依第13講，何者正確？", "option_a": "查核結果可能影響承商評鑑與後續投標資格，應妥善改善", "option_b": "查核結果不得作為任何參考", "option_c": "查核結果只影響承辦人午餐", "option_d": "缺失不用回應", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講實務提醒，查核結果影響承商評鑑與後續投標資格，應妥善回應缺失並完成矯正預防措施。", "topic": "查核結果影響", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "廠商未於預定竣工前或當日書面通知監造與機關，事後主張機關驗收逾期。依第13講，廠商應先注意何者？", "option_a": "廠商應於預定竣工前或當日書面通知監造與機關", "option_b": "廠商永遠不需通知竣工", "option_c": "只需通知其他投標廠商", "option_d": "通知只能口頭", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講驗收時程指出，廠商於預定竣工前或當日，應書面通知監造與機關。", "topic": "竣工通知", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "有初驗程序者，機關收齊資料後拖了60日才辦初驗。依第13講，主要問題為何？", "option_a": "有初驗程序者，收齊資料起30日內辦初驗", "option_b": "初驗可無限期延後", "option_c": "初驗一定在驗收後辦", "option_d": "初驗只需廠商自行辦理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講時程控管整理，有初驗程序者，收齊資料起30日內辦初驗；初驗合格後20日內辦理驗收。", "topic": "初驗資料", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "某案無初驗程序，機關自廠商通知備驗日起50日才完成驗收。依第13講，主要問題為何？", "option_a": "無初驗程序者，機關應自通知備驗/驗收日起30日內完成驗收並作成紀錄", "option_b": "無初驗程序者不用驗收", "option_c": "無初驗程序者可等一年", "option_d": "無初驗程序者只能部分驗收", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講時程控管指出，無初驗程序者，機關應自廠商通知之備驗或驗收日起30日內完成驗收並作成紀錄。", "topic": "無初驗程序", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "某履約成果有非重大不符合，但不影響安全與使用需求。依第13講，機關可能如何處理？", "option_a": "得減價收受", "option_b": "必須全案解除且不得收受", "option_c": "一律視為完全合格不減價", "option_d": "不得留下任何紀錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第72條整理，非重大不符合且不影響安全與使用需求者，得減價收受。", "topic": "減價收受", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "某工程部分已可安全使用且有先行使用必要，機關想先付款該部分。依第13講，應注意何者？", "option_a": "經核准對符合部分辦理部分驗收並支付對應價金，界定計價與保固範圍", "option_b": "不用核准即可付款全部價金", "option_c": "部分驗收不得存在", "option_d": "先行使用一定不需紀錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第72條指出，先行使用有必要時，得經核准對符合部分辦理部分驗收並支付對應價金；實務上須明確界定計價與保固起算範圍。", "topic": "部分驗收與先行使用", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "某隱蔽工程品質有重大疑慮，廠商主張已封閉不得檢查。依第13講，機關必要時可如何處理？", "option_a": "隱蔽工程得於必要時拆驗", "option_b": "隱蔽工程永遠不得檢查", "option_c": "只能相信廠商口頭保證", "option_d": "直接全案付款", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第72條整理，隱蔽工程得於必要時拆驗，以確認是否符合契約、圖說與規範。", "topic": "隱蔽工程拆驗", "source": "Notion：政府採購法 / 第13講 / 再一次"}, {"id": "GPL13B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "達公告金額案件驗收完畢後，機關遲遲未檢送結算、驗收證明或相關列示文件。依第13講，期限原則為何？", "option_a": "驗收完畢15日內檢送", "option_b": "驗收完畢一年內即可", "option_c": "永遠不用檢送", "option_d": "決標前檢送", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第13講第73條整理，達公告金額或經機關認定者，機關應於驗收完畢15日內檢送結算、驗收證明或其他列示文件。", "topic": "驗收證明期限", "source": "Notion：政府採購法 / 第13講 / 再一次"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>

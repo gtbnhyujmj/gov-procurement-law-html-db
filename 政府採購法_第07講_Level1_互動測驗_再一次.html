@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政府採購法 第07講 Level 1｜再一次</title>
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f6f6f6; color: #222; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 3px 16px rgba(0,0,0,.08); }
+  h1 { font-size: 1.55rem; margin-top: 0; }
+  .meta { color: #666; margin-bottom: 12px; }
+  .score { font-weight: 700; margin: 12px 0; }
+  .q { font-size: 1.15rem; font-weight: 700; margin: 18px 0; }
+  button { border: 1px solid #ddd; background: #fff; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-size: 1rem; }
+  button:hover { background: #f1f1f1; }
+  .option { display: block; width: 100%; text-align: left; margin: 10px 0; }
+  .correct { border-color: #27865f; background: #e9fff4; }
+  .wrong { border-color: #b94a48; background: #fff0f0; }
+  .feedback { margin-top: 16px; padding: 14px; border-radius: 10px; background: #f8f8f8; }
+  .nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  #answerList p { border-top: 1px solid #eee; padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>政府採購法 第07講 Level 1｜再一次 25題</h1>
+    <div class="meta">第二套：偏現場判斷、複合標分類、專業資格、界面整合、技術服務迴避、統包適用與風險。</div>
+    <div class="score" id="score"></div>
+    <div class="meta" id="progress"></div>
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" style="display:none;"></div>
+    <div class="nav">
+      <button onclick="prevQ()">上一題</button>
+      <button onclick="nextQ()">下一題</button>
+      <button onclick="restart()">重新開始</button>
+      <button onclick="showAnswers()">顯示/隱藏全部答案</button>
+    </div>
+    <div id="answerList" style="display:none; margin-top:20px;"></div>
+  </div>
+</div>
+<script>
+const questions = [{"id": "GPL07B-L1-01", "level": "Level 1", "type": "multiple_choice", "question": "某承辦人尚未判斷採購標的是工程、財物或勞務，就直接套用招標程序。依第07講，最主要的前置缺失為何？", "option_a": "未先確認標的類型與金額級距", "option_b": "未先確認廠商喜好", "option_c": "未先確認天氣", "option_d": "未先確認主管休假日", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講強調採購前兩大確認：標的類型與金額級距；不同類型與門檻會影響程序與審查強度。", "topic": "採購前判斷", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-02", "level": "Level 1", "type": "multiple_choice", "question": "某案包含工程800萬元、設備300萬元、顧問服務100萬元。依第07講，較可能如何歸類？", "option_a": "工程金額占比最高，歸類為工程", "option_b": "只要有設備就歸類為財物", "option_c": "只要有顧問就歸類為勞務", "option_d": "三者混合就完全不適用採購法", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理複合標的以預算金額占比最高者歸類；本例工程占比最高。", "topic": "複合標的", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-03", "level": "Level 1", "type": "multiple_choice", "question": "某工程採購金額已達公告金額以上，承辦人卻按小額採購簡化辦理。依第07講，主要問題為何？", "option_a": "金額級距判斷錯誤，可能導致程序適用錯誤", "option_b": "公告金額以上一定可以簡化", "option_c": "工程採購永遠不看金額", "option_d": "只要廠商同意即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講指出金額級距對應不同程序與審查強度，公告金額以上須公告，不能任意按小額程序處理。", "topic": "金額門檻", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-04", "level": "Level 1", "type": "multiple_choice", "question": "依第07講，公告金額1/10以下得免公告逕行採購時，仍應注意何者？", "option_a": "仍需留痕與比價合理化", "option_b": "可以完全不留任何資料", "option_c": "可直接指定親友廠商且不需理由", "option_d": "不需要任何採購紀錄", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講提醒公告金額1/10以下得免公告逕行採購，但仍需留痕與比價合理化。", "topic": "公告金額1/10以下", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-05", "level": "Level 1", "type": "multiple_choice", "question": "某新手不知道共同供應契約、歷史標案統計與GPA資料去哪查。依第07講，較適合先查哪裡？", "option_a": "政府電子採購網", "option_b": "私人網購平台", "option_c": "個人社群動態", "option_d": "飲料店菜單", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理政府電子採購網可查共同供應契約、歷史標案統計、GPA資料、範本、教育訓練與估價議價工具等。", "topic": "資訊平台", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-06", "level": "Level 1", "type": "multiple_choice", "question": "某承辦人要找招標文件表格、採購手冊、判例與爭議處理案例。依第07講，較適合使用何者？", "option_a": "行政院公共工程委員會網站", "option_b": "私人購物車", "option_c": "廠商私人廣告", "option_d": "承辦人個人相簿", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理PCC網站提供公共工程法規、招標文件與表格、採購手冊、判例與爭議處理案例等。", "topic": "PCC資源", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-07", "level": "Level 1", "type": "multiple_choice", "question": "某案內容為橋梁修建與機電設備安裝。依第07講，較可能屬於何種採購方向？", "option_a": "工程採購", "option_b": "純勞務採購", "option_c": "財產標售", "option_d": "人事任用", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講列示工程包括新建、增建、改建、修建、機械與化工設備安裝與系統工程等。", "topic": "工程採購範圍", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-08", "level": "Level 1", "type": "multiple_choice", "question": "某公共工程涉及建築、消防、機電與室內裝修。依第07講，承辦人應有何認知？", "option_a": "工程採購常連結多種專業法規與專業簽證制度", "option_b": "只看採購法就完全足夠，其他法規都無關", "option_c": "所有專業簽證都可省略", "option_d": "消防與機電永遠不是工程問題", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講指出工程面常涉及建築法、消防法、技師法、營造業法、室內裝修管理、機電與環保等周邊法規。", "topic": "周邊法規", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-09", "level": "Level 1", "type": "multiple_choice", "question": "某大型整體工程由未具綜合營造業資格者承攬。依第07講，最主要應注意何者？", "option_a": "承作主體是否具備營造業法所定適當登記與承攬資格", "option_b": "只要價格低即可不看資格", "option_c": "營造業資格完全不影響工程", "option_d": "所有工程都只要土木包工業即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理營造業法分類包含綜合營造業、專業營造業、土木包工業，各有登記與承攬範圍。", "topic": "營造業資格", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-10", "level": "Level 1", "type": "multiple_choice", "question": "某在地小型綜合工程欲由土木包工業承作。依第07講，土木包工業的定位較接近何者？", "option_a": "向直轄市或縣市主管機關登記，承作在地小型綜合工程", "option_b": "專門承作所有國際巨額捷運工程", "option_c": "完全不需登記即可承作所有工程", "option_d": "只負責法律訴願代理", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理土木包工業向直轄市或縣市主管機關登記，承作在地小型綜合工程。", "topic": "土木包工業", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-11", "level": "Level 1", "type": "multiple_choice", "question": "某高壓電氣工程由一般營造業直接施作，未確認電氣承裝業資格。依第07講，主要風險是什麼？", "option_a": "部分高低壓系統工程需具電氣承裝業等專業資格", "option_b": "電氣工程一律不得採購", "option_c": "電氣承裝業資格只適用室內裝修", "option_d": "所有營造業均可承作任何高壓工程", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講指出電氣承裝業分級對應可承作之高低壓系統範圍，部分工程不得由一般營造業逕為承裝。", "topic": "專業承裝", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-12", "level": "Level 1", "type": "multiple_choice", "question": "某建築工程水電金額占比高，且預鑄工法使界面整合困難。依第07講，承辦人可考慮何種設計？", "option_a": "合併招標並明定施工配合與界面責任，或考慮共同投標", "option_b": "完全不處理界面責任", "option_c": "禁止水電與建築廠商協調", "option_d": "全部推給驗收時再決定", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講指出水電與建築合併或分開招標應看水電金額占比、預鑄工法、界面整合難度；界面困難時可合併招標，並明定施工配合與界面責任。", "topic": "水電與建築界面", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-13", "level": "Level 1", "type": "multiple_choice", "question": "某案要拆改固定隔屏、建築櫥櫃與高度超過1.2公尺的牆面。依第07講，較可能涉及何種管理？", "option_a": "建築物室內裝修管理", "option_b": "單純文具採購", "option_c": "私人餐飲服務", "option_d": "人事聘任程序", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講定義室內裝修包括固定於建築物體的天花板、牆面高度超過1.2m、固定隔屏與建築櫥櫃等。", "topic": "室內裝修判斷", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-14", "level": "Level 1", "type": "multiple_choice", "question": "某未依法登記之業者承攬建築物室內裝修施工。依第07講，主要疑義為何？", "option_a": "室內裝修承作主體應為依法登記之建築師、營造業或室內裝修業等", "option_b": "室內裝修不需要任何資格", "option_c": "只要便宜即可", "option_d": "承作主體可由使用者任意指定私人", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理室內裝修得承作主體包含依法登記之建築師、營造業、室內裝修業；建築師亦可執行設計與施工。", "topic": "室內裝修資格", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-15", "level": "Level 1", "type": "multiple_choice", "question": "某機關委託工程顧問公司做可行性研究、設計與監造。依第07講，這屬於何類採購？", "option_a": "勞務類之技術服務採購", "option_b": "財物買受", "option_c": "工程施工", "option_d": "財產標售", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理技術服務屬勞務採購，包含規劃、可行性研究、設計、監造、專案管理等。", "topic": "技術服務分類", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-16", "level": "Level 1", "type": "multiple_choice", "question": "某廠商負責工程設計，又由同一利害關係人承作施工。依第07講，主要問題為何？", "option_a": "規劃/設計與施工應分離，避免同一利害關係人兼任", "option_b": "設計與施工必須永遠同一人", "option_c": "只要價格低就不用分離", "option_d": "監造完全沒有獨立性要求", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講提醒技術服務涉及利益衝突與分工迴避，規劃/設計與施工應分離，不得由同一利害關係人兼任。", "topic": "技術服務迴避", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-17", "level": "Level 1", "type": "multiple_choice", "question": "某監造顧問與施工廠商利益高度牽連。依第07講，承辦人應注意何者？", "option_a": "專案管理與監造之獨立性需確保", "option_b": "監造越依附施工廠商越好", "option_c": "監造不得審查施工", "option_d": "監造與施工利益牽連完全無風險", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講指出專案管理、監造之獨立性需確保，避免與施工廠商間之利益牽連。", "topic": "監造獨立性", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-18", "level": "Level 1", "type": "multiple_choice", "question": "某技術服務案只看最低價格，不評估團隊、計畫書與技術能力。依第07講，較可能忽略何者？", "option_a": "技術服務多採評選制，重技術能力、計畫書、團隊與價格占比綜合評分", "option_b": "技術服務只能抽籤", "option_c": "技術服務不得看技術能力", "option_d": "設計監造不屬技術服務", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理技術服務多採評選制或最有利標，重技術能力、計畫書、團隊、價格占比等綜合評分。", "topic": "技術服務評選", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-19", "level": "Level 1", "type": "multiple_choice", "question": "某機關採統包的唯一理由是『想快一點』。依第07講，這樣是否充分？", "option_a": "不充分，不得僅以縮短工期作為採行統包之理由", "option_b": "充分，統包唯一目的就是趕工", "option_c": "充分，統包不需要任何理由", "option_d": "只要主管喜歡即可", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講明確提醒不得僅以縮短工期作為採行統包之理由。", "topic": "統包理由", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-20", "level": "Level 1", "type": "multiple_choice", "question": "某大型工程界面複雜，需要整合設計、施工、機電、管線與裝修。依第07講，較可能考慮何種方式？", "option_a": "統包", "option_b": "完全免招標", "option_c": "私人購物", "option_d": "只做口頭契約", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理統包可將規劃、設計、施工，含機電、管線、裝修等，由統包廠商一體負責，適合需要界面整合的案件。", "topic": "統包適用", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-21", "level": "Level 1", "type": "multiple_choice", "question": "某統包案招標資訊不足，廠商只能用低標準材料估算。依第07講，主要風險為何？", "option_a": "資訊不足易失衡，可能造成品質下修", "option_b": "資訊越不足越公平", "option_c": "統包一定不需要設計審查", "option_d": "材料標準越低越符合法規", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講指出統包風險包括品質下修、設計審查耗時、資訊不足易失衡；招標文件須合理提供資訊。", "topic": "統包風險", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-22", "level": "Level 1", "type": "multiple_choice", "question": "某工程只是內容明確且簡單的農路或步道工程。依第07講，是否適合採統包？", "option_a": "通常不宜採統包", "option_b": "必須採統包", "option_c": "只要想快就一定採統包", "option_d": "統包與工程複雜度無關", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理內容明確且簡單，例如土地開挖、農路、步道等，不宜採統包。", "topic": "統包不適用", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-23", "level": "Level 1", "type": "multiple_choice", "question": "依第07講，統包案契約管理重點不包括下列何者？", "option_a": "明定績效、品質、界面、工期、設計審查節點與變更機制", "option_b": "完全不訂品質標準", "option_c": "明確界面責任", "option_d": "規劃設計審查節點", "correct": "B", "points": 1, "required": "TRUE", "explanation": "第07講整理統包管理重點包含明定績效、品質、界面、工期、設計審查節點與變更機制。", "topic": "統包管理", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-24", "level": "Level 1", "type": "multiple_choice", "question": "依第07講，原住民族地區未達一定金額之採購，政策上應優先考量何者？", "option_a": "由原住民個人、機構、法人或團體承攬", "option_b": "只能由外國廠商承攬", "option_c": "只能由承辦人親屬承攬", "option_d": "完全不得採購", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講整理原住民族地區採購政策規範，於原民地區未達一定金額時，應優先由原住民個人、機構、法人或團體承攬。", "topic": "原住民族地區採購", "source": "Notion：政府採購法 / 第07講 / 再一次"}, {"id": "GPL07B-L1-25", "level": "Level 1", "type": "multiple_choice", "question": "依第07講整體脈絡，工程採購新手最應建立的觀念為何？", "option_a": "工程採購不是只看採購法，還要連結專業主體、周邊法規、技術服務與統包風險", "option_b": "工程採購只要找最低價就結束", "option_c": "技術服務與監造完全不重要", "option_d": "統包永遠最好且沒有風險", "correct": "A", "points": 1, "required": "TRUE", "explanation": "第07講聚焦工程採購的法規體系與資訊連結，涵蓋專業主體、周邊法規、技術服務、統包適用與不適用情形。", "topic": "工程採購新手地圖", "source": "Notion：政府採購法 / 第07講 / 再一次"}];
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+function render() {
+  const q = questions[current];
+  document.getElementById('progress').textContent = `第 ${current + 1} / ${questions.length} 題｜考點：${q.topic}`;
+  document.getElementById('question').textContent = q.question;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML = '';
+  ['A','B','C','D'].forEach(letter => {
+    const key = 'option_' + letter.toLowerCase();
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = `${letter}. ${q[key]}`;
+    btn.onclick = () => choose(letter);
+    if (answers[current]) {
+      if (letter === q.correct) btn.classList.add('correct');
+      else if (letter === answers[current]) btn.classList.add('wrong');
+    }
+    optBox.appendChild(btn);
+  });
+  if (answers[current]) showFeedback();
+  else {
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('feedback').textContent = '';
+  }
+  updateScore();
+}
+
+function choose(letter) {
+  if (!answers[current]) answers[current] = letter;
+  render();
+}
+
+function showFeedback() {
+  const q = questions[current];
+  const selected = answers[current];
+  const ok = selected === q.correct;
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  fb.textContent = `${ok ? '答對' : '答錯'}。正解：${q.correct}。${q.explanation}`;
+}
+
+function updateScore() {
+  const done = answers.filter(Boolean).length;
+  const correct = answers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+  document.getElementById('score').textContent = `目前作答：${done} / ${questions.length}；答對：${correct} 題`;
+}
+
+function nextQ() {
+  if (current < questions.length - 1) current++;
+  render();
+}
+
+function prevQ() {
+  if (current > 0) current--;
+  render();
+}
+
+function restart() {
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('answerList').style.display = 'none';
+  render();
+}
+
+function showAnswers() {
+  const box = document.getElementById('answerList');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  box.innerHTML = '<h2>答案表</h2>' + questions.map((q, i) =>
+    `<p><strong>${i + 1}. ${q.correct}</strong>｜${q.topic}｜${q.explanation}</p>`
+  ).join('');
+}
+
+render();
+</script>
+</body>
+</html>
